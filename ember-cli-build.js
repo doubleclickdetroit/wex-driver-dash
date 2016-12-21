@@ -4,7 +4,10 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // Add options here
+    'ember-cli-foundation-6-sass': {
+      'foundationJs': 'all'
+      // load js partials: http://foundation.zurb.com/sites/docs/accordion.html#sass-variables
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
