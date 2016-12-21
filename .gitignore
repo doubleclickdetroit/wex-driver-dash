@@ -15,3 +15,8 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
+
+/vendor/fontello/*
+!/vendor/fontello/config.json
+!/vendor/fontello/css
+!/vendor/fontello/font
