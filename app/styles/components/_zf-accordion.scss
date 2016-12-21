@@ -1,12 +1,22 @@
 .accordion {
   // sass-vars defined in "_settings"; http://foundation.zurb.com/sites/docs/accordion.html#sass-variables
 
-  .accordion-title {
-    padding-left: 2rem;
+  .accordion-item {
+    .accordion-title {
+      padding-left: 2rem;
 
-    &::before {
-      left:  1rem;
-      right: auto;
+      &::before {
+        font-family: 'fontello';
+        left:  1rem;
+        right: auto;
+        content: '\e800';
+      }
+    }
+
+    &.is-active {
+      .accordion-title::before {
+        content: '\e801';
+      }
     }
   }
 }
