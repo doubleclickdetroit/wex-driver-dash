@@ -3,10 +3,14 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'driver-dash',
+    podModulePrefix: 'driver-dash/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
+      EXTEND_PROTOTYPES: {
+        Date: false,
+      },
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
