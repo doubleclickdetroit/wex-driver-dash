@@ -1,0 +1,12 @@
+.accordion {
+  // sass-vars defined in "_settings"; http://foundation.zurb.com/sites/docs/accordion.html#sass-variables
+
+  .accordion-title {
+    padding-left: 2rem;
+
+    &::before {
+      left:  1rem;
+      right: auto;
+    }
+  }
+}
