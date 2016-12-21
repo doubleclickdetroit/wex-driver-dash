@@ -1,3 +1,14 @@
 
 .icon-plus:before { content: '\e800'; } /* '' */
 .icon-minus:before { content: '\e801'; } /* '' */
+.icon-clock:before { content: '\e802'; } /* '' */
+.icon-down-open-mini:before { content: '\e803'; } /* '' */
+.icon-up-open-mini:before { content: '\e804'; } /* '' */
+.icon-right-open-mini:before { content: '\e805'; } /* '' */
+.icon-left-open-mini:before { content: '\e806'; } /* '' */
+.icon-plus-circled:before { content: '\e807'; } /* '' */
+.icon-ok:before { content: '\e808'; } /* '' */
+.icon-attention:before { content: '\e809'; } /* '' */
+.icon-check-empty:before { content: '\f096'; } /* '' */
+.icon-sort-down:before { content: '\f0dd'; } /* '' */
+.icon-sort-up:before { content: '\f0de'; } /* '' */
