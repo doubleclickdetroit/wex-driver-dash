@@ -22,6 +22,7 @@
     "broccoli-asset-rev": "^2.4.2",
     "broccoli-clean-css": "^1.1.0",
     "ember-ajax": "^2.0.1",
+    "ember-block-slots": "1.1.8",
     "ember-cli": "2.6.3",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",
@@ -40,7 +41,9 @@
     "ember-export-application-global": "^1.0.5",
     "ember-inflector": "^1.9.6",
     "ember-load-initializers": "^0.5.1",
+    "ember-prop-types": "2.5.11",
     "ember-resolver": "^2.0.3",
+    "ember-truth-helpers": "1.2.0",
     "liquid-fire": "0.27.0",
     "loader.js": "^4.0.1"
   }
