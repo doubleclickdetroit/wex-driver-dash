@@ -2,4 +2,6 @@
 @import "foundation";
 @include foundation-everything;
 
+@import "mixins";
 @import "components";
+@import "pages";

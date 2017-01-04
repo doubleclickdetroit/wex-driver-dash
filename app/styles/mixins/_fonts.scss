@@ -1,0 +1,7 @@
+@mixin open-sans($variant:'regular') {
+  font-family: "open_sans#{$variant}";
+}
+
+@mixin tablet-gothic($variant:'regular') {
+  font-family: "tabletgothic_condensed_#{$variant}";
+}
