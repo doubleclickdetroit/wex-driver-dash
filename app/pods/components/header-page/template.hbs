@@ -13,7 +13,8 @@
 </div>
 
 <div class="content-partners">
-  <p>Mobile Payment Currently Accepted At These Locations</p>
+  <span>Mobile Payment Currently Accepted At These Locations</span>
+  {{#each partners as |partner|}}{{ partner.name }}{{/each}}
 </div>
 
 {{yield}}
