@@ -1,3 +1,47 @@
 .component-header-page {
-  //
+  margin-bottom: rem-calc(50);
+
+  .content-title,
+  .content-partners {
+    padding-top:    rem-calc(30);
+    padding-bottom: rem-calc(30);
+  }
+
+  .content-title {
+    color:            $white;
+    background-color: $black;
+
+    h2, p {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      @include tablet-gothic(bold);
+      font-size: rem-calc(40);
+    }
+  }
+
+  .content-partners {
+    @include tablet-gothic(bold);
+    text-transform: uppercase;
+    font-size: rem-calc(14);
+    color: #9d9d9d;
+    background-color: #f4f4f4;
+
+    @include breakpoint(medium up) {
+      text-align: right;
+    }
+
+    p {
+      display: inline-block;
+      margin: 0 rem-calc(30) 0 0;
+    }
+
+    .partner-logo {
+      &:not(:last-of-type) {
+        margin-right: rem-calc(10);
+      }
+    }
+  }
+
 }
