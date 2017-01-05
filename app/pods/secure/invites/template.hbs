@@ -17,9 +17,9 @@
               <th>Last Name</th>
               <th>First Name</th>
               <th>Driver ID</th>
-              <th>Mobile #</th>
+              <th>Mobile Phone #</th>
               <th>DriverDash Access</th>
-              <th width="25">{{input type="checkbox"}}</th>
+              <th class="actions">{{input type="checkbox"}}</th>
             </tr>
           </thead>
           <tbody>
@@ -27,28 +27,48 @@
               <td>Bhatia</td>
               <td>Sonu</td>
               <td>012394</td>
-              <td><a href="#">Add</a></td>
-              <td>-</td>
+              <td>
+                <div class="phone">
+                  <a href="#"><i class="icon-plus-circled"></i>add</a>
+                </div>
+              </td>
+              <td><div class="uninvited">&mdash;</div></td>
               <td>{{input type="checkbox"}}</td>
             </tr>
             <tr>
               <td>Bowie</td>
               <td>David</td>
               <td>343023</td>
-              <td>207-123-4567</td>
-              <td>Content</td>
+              <td><div class="phone">207-123-4567</div></td>
+              <td>
+                <div class="invited">
+                  <p class="status">Invite Sent</p>
+                  <p class="expiration">Expires in 5 days</p>
+                </div>
+              </td>
               <td>{{input type="checkbox"}}</td>
             </tr>
             <tr>
               <td>Dilios</td>
               <td>Chris</td>
               <td>343056</td>
-              <td>Content</td>
-              <td>Content</td>
+              <td><div class="phone">{{input placeholder="207-555-1212"}}</div></td>
+              <td><div class="uninvited">&mdash;</div></td>
               <td>{{input type="checkbox"}}</td>
             </tr>
           </tbody>
         </table>
+
+        <footer class="accordion-item-footer">
+          <ul class="pagination" role="navigation" aria-label="Pagination">
+            <li class="disabled">Previous</li>
+            <li class="current">1</li>
+            <li><a href="#0" aria-label="Page 2">2</a></li>
+            <li><a href="#0" aria-label="Next page">Next</a></li>
+          </ul>
+
+          <button class="button">Invite</button>
+        </footer>
 
       </div>
     </li>
