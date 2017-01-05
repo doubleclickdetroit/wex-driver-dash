@@ -2,14 +2,41 @@
   // sass-vars defined in "_settings"; http://foundation.zurb.com/sites/docs/accordion.html#sass-variables
 
   .accordion-item {
+    & {
+      border-bottom: 1px solid $accordion-border-color;
+    }
+
     .accordion-title {
-      padding-left: 2rem;
+      @include tablet-gothic();
+      text-transform: uppercase;
+      border-color:     $accordion-item-background;
+      background-color: $accordion-item-background;
+
+      &:hover {
+        color: $accordion-item-color;
+      }
 
       &::before {
+        position: static;
+        margin-right: rem-calc(15);
         font-family: 'fontello';
-        left:  1rem;
-        right: auto;
+        font-size: rem-calc(16);
         content: '\e800';
+      }
+    }
+
+    .accordion-content {
+      border-bottom: none;
+
+      table {
+        margin-bottom: 0;
+      }
+
+      .no-content {
+        display: flex;
+        align-items:     center;
+        justify-content: center;
+        min-height: rem-calc(150);
       }
     }
 
@@ -17,6 +44,10 @@
       .accordion-title::before {
         content: '\e801';
       }
+    }
+
+    + .accordion-item {
+      margin-top: rem-calc(20);
     }
   }
 }

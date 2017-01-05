@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'tabletgothic_condensed_regular';
+    src: url('../font/TabletGothicCondensed-Regular.eot');
+    src: url('../font/TabletGothicCondensed-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../font/TabletGothicCondensed-Regular.woff') format('woff'),
+         url('../font/TabletGothicCondensed-Regular.ttf') format('truetype'),
+         url('../font/TabletGothicCondensed-Regular.svg#tabletgothic_condensed_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

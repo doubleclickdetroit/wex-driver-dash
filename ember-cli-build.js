@@ -31,6 +31,27 @@ module.exports = function(defaults) {
   app.import( 'vendor/fontello/font/fontello.ttf', { destDir: 'font' } );
   app.import( 'vendor/fontello/font/fontello.svg', { destDir: 'font' } );
 
+  // Tablet Gothic Condensed Regular
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_regular/stylesheet.css' );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_regular/TabletGothicCondensed-Regular.eot', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_regular/TabletGothicCondensed-Regular.woff', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_regular/TabletGothicCondensed-Regular.ttf', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_regular/TabletGothicCondensed-Regular.svg', { destDir: 'font' } );
+
+  // Tablet Gothic Condensed Semibold
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_semibold/stylesheet.css' );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_semibold/TabletGothicCondensed-SemiBold.eot', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_semibold/TabletGothicCondensed-SemiBold.woff', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_semibold/TabletGothicCondensed-SemiBold.ttf', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_semibold/TabletGothicCondensed-SemiBold.svg', { destDir: 'font' } );
+
+  // Tablet Gothic Condensed Bold
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_bold/stylesheet.css' );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_bold/TabletGothicCondensed-Bold.eot', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_bold/TabletGothicCondensed-Bold.woff', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_bold/TabletGothicCondensed-Bold.ttf', { destDir: 'font' } );
+  app.import( 'vendor/tabletgothic/tabletgothic_condensed_bold/TabletGothicCondensed-Bold.svg', { destDir: 'font' } );
+
   // Open Sans Regular
   app.import( 'vendor/opensans/opensans_regular/stylesheet.css' );
   app.import( 'vendor/opensans/opensans_regular/OpenSans-Regular-webfont.eot', { destDir: 'font' } );

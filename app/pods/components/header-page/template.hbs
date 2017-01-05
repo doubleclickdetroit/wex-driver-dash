@@ -1,1 +1,27 @@
+<div class="content-title">
+  <div class="row">
+    <h2>
+      {{#yield-slot 'title'}}
+        {{yield}}{{else}}Page Title
+      {{/yield-slot}}
+    </h2>
+
+    <p>
+      {{#yield-slot 'subtitle'}}
+        {{yield}}{{else}}Lorem ipsum dolor sit amet...
+      {{/yield-slot}}
+    </p>
+  </div>
+</div>
+
+<div class="content-partners">
+  <div class="row">
+    <p>Mobile Payment Currently Accepted At These Locations</p>
+
+    {{#each partners as |partner|}}
+      <span class="partner-logo">{{ partner.name }}</span>
+    {{/each}}
+  </div>
+</div>
+
 {{yield}}
