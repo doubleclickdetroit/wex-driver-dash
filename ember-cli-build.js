@@ -59,6 +59,13 @@ module.exports = function(defaults) {
   app.import( 'vendor/opensans/opensans_regular/OpenSans-Regular-webfont.ttf', { destDir: 'font' } );
   app.import( 'vendor/opensans/opensans_regular/OpenSans-Regular-webfont.svg', { destDir: 'font' } );
 
+  // Open Sans Italic
+  app.import( 'vendor/opensans/opensans_italic/stylesheet.css' );
+  app.import( 'vendor/opensans/opensans_italic/OpenSans-Italic-webfont.eot', { destDir: 'font' } );
+  app.import( 'vendor/opensans/opensans_italic/OpenSans-Italic-webfont.woff', { destDir: 'font' } );
+  app.import( 'vendor/opensans/opensans_italic/OpenSans-Italic-webfont.ttf', { destDir: 'font' } );
+  app.import( 'vendor/opensans/opensans_italic/OpenSans-Italic-webfont.svg', { destDir: 'font' } );
+
   // Open Sans Semibold
   app.import( 'vendor/opensans/opensans_semibold/stylesheet.css' );
   app.import( 'vendor/opensans/opensans_semibold/OpenSans-Semibold-webfont.eot', { destDir: 'font' } );

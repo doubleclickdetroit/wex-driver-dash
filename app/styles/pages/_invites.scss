@@ -1,3 +1,102 @@
 .page-invites {
   @include grid-row;
+
+  table {
+    table-layout: fixed;
+
+    thead .actions {
+      width: 3.5rem;
+    }
+    td {
+      position: relative;
+    }
+    input {
+      margin-bottom: 0;
+    }
+  }
+
+  .accordion-item-footer {
+    $spacing: rem-calc(15);
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: $spacing;
+
+    .pagination {
+      margin-bottom: 0;
+    }
+    .button {
+      position: absolute;
+      right:  $spacing;
+      bottom: $spacing;
+      margin: 0;
+      padding-left:  rem-calc(30);
+      padding-right: rem-calc(30);
+      border-radius: rem-calc(4);
+      @include open-sans(semibold);
+    }
+  }
+
+  /**
+   * Temporary styling for elements until in components
+   */
+  .phone {
+    position: relative;
+
+    input {
+      position: absolute;
+      top: -1.20rem;
+    }
+  }
+  .uninvited {
+    color: #ccc;
+  }
+  table a {
+    .icon-plus-circled {
+      display: inline-block;
+      margin-right: rem-calc(7);
+      width: rem-calc(16);
+      font-size: rem-calc(16);
+      vertical-align: middle;
+
+      &::before {
+        margin: 0;
+      }
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .invited {
+    position: absolute;
+    top: .35rem;
+    padding-left: rem-calc(20);
+
+    &::before {
+      position: absolute;
+      top:  calc(50% - 10px);
+      left: 0;
+      color: $success-color;
+      font-family: 'fontello';
+      font-size: rem-calc(16);
+      content: '';
+    }
+
+    .status,
+    .expiration {
+      margin-bottom: 0;
+      line-height: normal;
+    }
+    .status {
+      @include open-sans(semibold);
+      color: #333;
+      font-size: rem-calc(14);
+    }
+    .expiration {
+      @include open-sans(italic);
+      color: #7f7f7f;
+      font-size: rem-calc(13);
+    }
+  }
 }
