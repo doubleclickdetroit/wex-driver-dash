@@ -1,0 +1,19 @@
+.pagination {
+  border: 1px solid #ccc;
+  border-radius: rem-calc(4);
+
+  @include breakpoint(medium up) {
+    display: flex;
+  }
+
+  li {
+    &:not(:last-of-type) {
+      border-right: 1px solid #ccc;
+    }
+  }
+
+  .current,
+  .current ~ li {
+    @include open-sans(semibold);
+  }
+}
