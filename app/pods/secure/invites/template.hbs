@@ -14,30 +14,38 @@
         <table>
           <thead>
             <tr>
-              <th width="200">Table Header</th>
-              <th>Table Header</th>
-              <th width="150">Table Header</th>
-              <th width="150">Table Header</th>
+              <th>Last Name</th>
+              <th>First Name</th>
+              <th>Driver ID</th>
+              <th>Mobile #</th>
+              <th>DriverDash Access</th>
+              <th width="25">{{input type="checkbox"}}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Content Goes Here</td>
-              <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-              <td>Content Goes Here</td>
-              <td>Content Goes Here</td>
+              <td>Bhatia</td>
+              <td>Sonu</td>
+              <td>012394</td>
+              <td><a href="#">Add</a></td>
+              <td>-</td>
+              <td>{{input type="checkbox"}}</td>
             </tr>
             <tr>
-              <td>Content Goes Here</td>
-              <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-              <td>Content Goes Here</td>
-              <td>Content Goes Here</td>
+              <td>Bowie</td>
+              <td>David</td>
+              <td>343023</td>
+              <td>207-123-4567</td>
+              <td>Content</td>
+              <td>{{input type="checkbox"}}</td>
             </tr>
             <tr>
-              <td>Content Goes Here</td>
-              <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-              <td>Content Goes Here</td>
-              <td>Content Goes Here</td>
+              <td>Dilios</td>
+              <td>Chris</td>
+              <td>343056</td>
+              <td>Content</td>
+              <td>Content</td>
+              <td>{{input type="checkbox"}}</td>
             </tr>
           </tbody>
         </table>
@@ -48,9 +56,7 @@
     <li class="accordion-item is-active" data-accordion-item>
       <a class="accordion-title">Manage Access</a>
       <div class="accordion-content" data-tab-content>
-
-        You currently have no drivers to manage, you can invite drivers from the list above.
-
+        <div class="no-content">You currently have no drivers to manage, you can invite drivers from the list above.</div>
       </div>
     </li>
   {{/zf-accordion}}
