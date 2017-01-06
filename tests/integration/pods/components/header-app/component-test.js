@@ -12,7 +12,8 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{header-app}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  // hard-coded values until dynamic
+  fixtureAssertions();
 
   // Template block usage:
   this.render(hbs`
@@ -21,5 +22,12 @@ test('it renders', function(assert) {
     {{/header-app}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  // hard-coded values until dynamic
+  fixtureAssertions();
+
+  function fixtureAssertions() {
+    assert.equal(this.$('.top-bar-title').text().trim(), 'WEX');
+    assert.equal(this.$('.account-name').text().trim(), 'State of Maine');
+    assert.equal(this.$('.account-number').text().trim(), '#123456789134');
+  }
 });

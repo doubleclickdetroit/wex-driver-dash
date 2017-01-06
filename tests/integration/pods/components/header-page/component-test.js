@@ -12,14 +12,17 @@ test('it renders', function(assert) {
 
   this.render(hbs`{{header-page}}`);
 
-  assert.equal(this.$().text().trim(), '');
+  assert.equal(this.$( '.content-title h2' ).text().trim(), 'Page Title');
+  assert.equal(this.$( '.content-title p' ).text().trim(), 'Lorem ipsum dolor sit amet...');
 
   // Template block usage:
   this.render(hbs`
     {{#header-page}}
-      template block text
+      {{#block-slot 'title'}}My Title{{/block-slot}}
+      {{#block-slot 'subtitle'}}My Subitle{{/block-slot}}
     {{/header-page}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$( '.content-title h2' ).text().trim(), 'My Title');
+  assert.equal(this.$( '.content-title p' ).text().trim(), 'My Subitle');
 });
