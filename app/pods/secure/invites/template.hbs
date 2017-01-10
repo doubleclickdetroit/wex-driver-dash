@@ -22,17 +22,14 @@
               <th class="actions">{{input type="checkbox"}}</th>
             </tr>
           </thead>
+          
           <tbody>
             {{#each model as |driver|}}
-              <tr>
-                <td>{{ driver.lastName }}</td>
-                <td>{{ driver.firstName }}</td>
-                <td>{{ driver.driverId }}</td>
-                <td>
-                  <div class="phone">
-                    <a href="#"><i class="icon-plus-circled"></i>add</a>
-                  </div>
-                </td>
+              {{#driver-details driver tagName="tr" as |detail|}}
+                <td>{{ detail.lastName }}</td>
+                <td>{{ detail.firstName }}</td>
+                <td>{{ detail.driverId }}</td>
+                <td>{{ detail.phone}}</td>
                 <td>
                   {{!-- <div class="uninvited">&mdash;</div> --}}
                   <div class="invited">
@@ -41,7 +38,7 @@
                   </div>
                 </td>
                 <td>{{input type="checkbox"}}</td>
-              </tr>
+              {{/driver-details}}
             {{/each}}
           </tbody>
         </table>
