@@ -1,8 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  allValidItems: Ember.computed('model.[]', function() {
-    return this.get( 'model' ).filter( item => !!item.get('phone') );
+  allValidItems: Ember.computed('model.@each.isValidPhone', function() {
+    return this.get( 'model' ).filter(item => {
+      const isValidPhone = item.get( 'isValidPhone' );
+      // if invalid phone, do not allow `isChecked`
+      if ( !isValidPhone ) { item.set('isChecked', false); }
+      return isValidPhone;
+    });
   }),
 
   checkedItems: Ember.computed('model.@each.isChecked', function() {

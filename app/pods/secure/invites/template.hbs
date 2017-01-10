@@ -8,51 +8,59 @@
 
   {{#zf-accordion data-multi-expand="true" data-allow-all-closed="true"}}
     <li class="accordion-item is-active" data-accordion-item>
-      <a class="accordion-title">Send Invites</a>
+      <a class="accordion-title">Send Invites <span class="items-count">{{pluralize model.length 'Driver'}}</span></a>
       <div class="accordion-content" data-tab-content>
 
-        <table>
-          <thead>
-            <tr>
-              <th>Last Name</th>
-              <th>First Name</th>
-              <th>Driver ID</th>
-              <th>Mobile Phone #</th>
-              <th>DriverDash Access</th>
-              <th class="actions"><input type="checkbox" checked={{isAllChecked}} onchange={{action "handleToggleAll" value="target.checked"}}></th>
-            </tr>
-          </thead>
+        {{#if model.length}}
 
-          <tbody>
-            {{#each model as |driver|}}
-              {{#driver-details driver tagName="tr" as |detail|}}
-                <td>{{ detail.lastName }}</td>
-                <td>{{ detail.firstName }}</td>
-                <td>{{ detail.driverId }}</td>
-                <td>{{ detail.phone }}</td>
-                <td>
-                  {{!-- <div class="uninvited">&mdash;</div> --}}
-                  <div class="invited">
-                    <p class="status">Invite Sent</p>
-                    <p class="expiration">Expires in 5 days</p>
-                  </div>
-                </td>
-                <td>{{input type="checkbox" checked=driver.isChecked disabled=(not driver.phone)}}</td>
-              {{/driver-details}}
-            {{/each}}
-          </tbody>
-        </table>
+          <table>
+            <thead>
+              <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Driver ID</th>
+                <th>Mobile Phone #</th>
+                <th>DriverDash Access</th>
+                <th class="actions"><input type="checkbox" checked={{isAllChecked}} onchange={{action "handleToggleAll" value="target.checked"}}></th>
+              </tr>
+            </thead>
 
-        <footer class="accordion-item-footer">
-          <ul class="pagination" role="navigation" aria-label="Pagination">
-            <li class="disabled">Previous</li>
-            <li class="current">1</li>
-            <li><a href="#0" aria-label="Page 2">2</a></li>
-            <li><a href="#0" aria-label="Next page">Next</a></li>
-          </ul>
+            <tbody>
+              {{#each model as |driver|}}
+                {{#driver-details driver tagName="tr" as |detail|}}
+                  <td>{{ detail.lastName }}</td>
+                  <td>{{ detail.firstName }}</td>
+                  <td>{{ detail.driverId }}</td>
+                  <td>{{ detail.phone }}</td>
+                  <td>
+                    {{!-- <div class="uninvited">&mdash;</div> --}}
+                    <div class="invited">
+                      <p class="status">Invite Sent</p>
+                      <p class="expiration">Expires in 5 days</p>
+                    </div>
+                  </td>
+                  <td>{{input type="checkbox" checked=driver.isChecked disabled=(not driver.isValidPhone)}}</td>
+                {{/driver-details}}
+              {{/each}}
+            </tbody>
+          </table>
 
-          <button class="button">Invite</button>
-        </footer>
+          <footer class="accordion-item-footer">
+            <ul class="pagination" role="navigation" aria-label="Pagination">
+              <li class="disabled">Previous</li>
+              <li class="current">1</li>
+              <li><a href="#0" aria-label="Page 2">2</a></li>
+              <li><a href="#0" aria-label="Next page">Next</a></li>
+            </ul>
+
+            <button class="button">Invite</button>
+          </footer>
+
+        {{else}}
+
+          <div class="no-content">You currently have no driver to invite, you need to first add them on WexOnline.</div>
+
+        {{/if}}
 
       </div>
     </li>
