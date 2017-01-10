@@ -23,6 +23,12 @@
         font-size: rem-calc(16);
         content: '\e800';
       }
+
+      .items-count {
+        float: right;
+        @include open-sans(regular);
+        font-size: rem-calc(13);
+      }
     }
 
     .accordion-content {
