@@ -18,5 +18,10 @@ export default DS.Model.extend({
     let numStr  = `${phone}`.replace( /[^0-9]/g, '' );
     let isValid = numStr.match( /^(\d{3})(\d{3})(\d{4})$/ );
     return numStr.replace( /(\d{3})(\d{3})(\d{4})/, '$1-$2-$3' );
-  })
+  }),
+
+  isValidPhone: Ember.computed('phone', function() {
+    const phone = this.get( 'phone' );
+    return !!phone && phone.match( /\d/g ).length === 10;
+  }),
 });
