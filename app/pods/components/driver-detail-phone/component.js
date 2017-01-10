@@ -4,17 +4,6 @@ export default Ember.Component.extend({
   isEditable:   false,
   displayPhone: false,
 
-  keyPress: function(evt) {
-    if ( evt.which === 13 ) {
-      this.send( 'handleIsEditable', false );
-
-      // if no phone on complete, revert back to "add"
-      if ( !this.get('phone') ) {
-        this.set( 'displayPhone', false );
-      }
-    }
-  },
-
   phoneDidChange: Ember.on('init', Ember.observer('phone', function() {
     this.set( 'displayPhone', !!this.get('phone') );
   })),
@@ -26,6 +15,17 @@ export default Ember.Component.extend({
     },
     handleIsEditable(isEditable=true) {
       this.set( 'isEditable', isEditable );
+    },
+
+    handleLeaveField() {
+      this.send( 'handleIsEditable', false );
+      if ( !this.get('phone') ) {
+        this.set( 'displayPhone', false );
+      }
+    },
+    handleEscapeKey() {
+      // rollback value
+      this.send( 'handleLeaveField' );
     }
   }
 
