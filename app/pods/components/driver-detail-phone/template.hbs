@@ -1,0 +1,15 @@
+{{#liquid-if displayPhone class="phone"}}
+
+  {{#liquid-if isEditable class="isEditable"}}
+    {{input value=phone class="phone-input"}}
+  {{else}}
+    <div class="phone-text" {{action "handleIsEditable"}}>{{phone}}</div>
+  {{/liquid-if}}
+
+{{else}}
+
+  <a href="#" {{action 'handleAddPhone'}}>
+    <i class="icon-plus-circled"></i>add
+  </a>
+
+{{/liquid-if}}
