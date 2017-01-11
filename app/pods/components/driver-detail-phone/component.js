@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: [ 'component-driver-detail-phone' ],
+
   phone:  '',
   buffer: '',
 
@@ -16,6 +18,17 @@ export default Ember.Component.extend({
     });
   }),
 
+  closeField() {
+    // allow `toDown` transition to completes before toggle isEditable
+    Ember.run.later(() => {
+      this.send( 'handleIsEditable', false );
+    }, 500);
+
+    if ( !this.get('buffer') ) {
+      this.set( 'displayPhone', false );
+    }
+  },
+
   actions: {
     handleAddPhone() {
       this.send( 'handleIsEditable' );
@@ -25,22 +38,18 @@ export default Ember.Component.extend({
       this.set( 'isEditable', isEditable );
       Ember.run.later(() => { $( '.phone-input' ).focus(); }, 500);
     },
-
-    handleLeaveField() {
-      this.send( 'handleIsEditable', false );
-
-      if ( !this.get('buffer') ) {
-        this.set( 'displayPhone', false );
-      }
+    handleClearBuffer() {
+      this.set( 'buffer', '' );
     },
+
+
     handleEnterKey() {
       this.set( 'phone', this.get('buffer') );
-      this.send( 'handleLeaveField' );
+      this.closeField();
     },
     handleEscapeKey() {
-      // rollback value
       this.set( 'buffer', this.get('phone') );
-      this.send( 'handleLeaveField' );
+      this.closeField();
     }
   }
 
