@@ -1,7 +1,7 @@
 {{#liquid-if displayPhone class="phone"}}
 
   {{#liquid-if isEditable class="isEditable"}}
-    {{input value=phone class="phone-input" insert-newline="handleLeaveField" escape-press="handleEscapeKey"}}
+    {{masked-input mask="111-111-1111" placeholderChar=" " value=buffer class="phone-input" insert-newline="handleEnterKey" escape-press="handleEscapeKey"}}
   {{else}}
     <div class="phone-text" {{action "handleIsEditable"}}>{{format-phone phone}}</div>
   {{/liquid-if}}
