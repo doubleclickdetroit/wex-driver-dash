@@ -46,14 +46,10 @@
           </table>
 
           <footer class="accordion-item-footer">
-            <ul class="pagination" role="navigation" aria-label="Pagination">
-              <li class="disabled">Previous</li>
-              <li class="current">1</li>
-              <li><a href="#0" aria-label="Page 2">2</a></li>
-              <li><a href="#0" aria-label="Next page">Next</a></li>
-            </ul>
-
-            <button class="button">Invite</button>
+            <button class="button">
+              Invite
+              {{#liquid-if (gt checkedItems.length 0) class="drivers-selected"}}<small>({{checkedItems.length}})</small>{{/liquid-if}}
+            </button>
           </footer>
 
         {{else}}

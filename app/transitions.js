@@ -13,4 +13,10 @@ export default function() {
     this.use( 'crossFade' )
   );
 
+  this.transition(
+    this.hasClass( 'drivers-selected' ),
+    this.toValue( true ),
+    this.use( 'toRight', { duration: 500 } )
+  );
+
 }

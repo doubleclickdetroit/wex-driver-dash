@@ -20,16 +20,19 @@
 
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     padding: $spacing;
 
+    .drivers-selected {
+      display: inline-block;
+    }
     .pagination {
       margin-bottom: 0;
     }
     .button {
-      position: absolute;
-      right:  $spacing;
-      bottom: $spacing;
+      // position: absolute;
+      // right:  $spacing;
+      // bottom: $spacing;
       margin: 0;
       padding-left:  rem-calc(30);
       padding-right: rem-calc(30);
