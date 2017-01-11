@@ -48,7 +48,6 @@
     position: relative;
     margin-top:    -.75rem;
     margin-bottom: -.75rem;
-
   }
   .uninvited {
     color: #ccc;
@@ -69,9 +68,17 @@
       text-decoration: underline;
     }
   }
+  .driver-access {
+    margin-top:    -.75rem;
+    margin-bottom: -.75rem;
+
+    .icon-spin3 {
+      font-size: rem-calc(13);
+    }
+  }
   .invited {
-    position: absolute;
-    top: .35rem;
+    // position: absolute;
+    // top: .35rem;
     padding-left: rem-calc(20);
 
     &::before {
