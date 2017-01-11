@@ -16,7 +16,14 @@ export default function() {
   this.transition(
     this.hasClass( 'drivers-selected' ),
     this.toValue( true ),
-    this.use( 'toRight', { duration: 500 } )
+    this.use( 'toRight', { duration: 500 } ),
+    this.reverse( 'toLeft' )
+  );
+
+  this.transition(
+    this.hasClass( 'driver-access' ),
+    this.toValue( true ),
+    this.use( 'toUp' )
   );
 
 }
