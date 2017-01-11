@@ -7,7 +7,7 @@
 <div class="page-invites">
 
   {{#zf-accordion data-multi-expand="true" data-allow-all-closed="true"}}
-    <li class="accordion-item is-active" data-accordion-item>
+    <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
       <a class="accordion-title">Send Invites <span class="items-count">{{pluralize model.length 'Driver'}}</span></a>
       <div class="accordion-content" data-tab-content>
 
@@ -65,7 +65,7 @@
       </div>
     </li>
 
-    <li class="accordion-item is-active" data-accordion-item>
+    <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
       <a class="accordion-title">Manage Access</a>
       <div class="accordion-content" data-tab-content>
         <div class="no-content">You currently have no drivers to manage, you can invite drivers from the list above.</div>
