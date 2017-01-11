@@ -89,6 +89,12 @@
       "css": "attention-circled",
       "code": 59402,
       "src": "fontawesome"
+    },
+    {
+      "uid": "44eb9d69bf3b9b74629ce6852a2f9681",
+      "css": "cancel-circled",
+      "code": 61550,
+      "src": "mfglabs"
     }
   ]
 }
