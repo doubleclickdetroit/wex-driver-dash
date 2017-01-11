@@ -4,8 +4,7 @@ export default Ember.Controller.extend({
   allValidItems: Ember.computed('model.@each.isValidPhone', function() {
     return this.get( 'model' ).filter(item => {
       const isValidPhone = item.get( 'isValidPhone' );
-      // if invalid phone, do not allow `isChecked`
-      if ( !isValidPhone ) { item.set('isChecked', false); }
+      item.set( 'isChecked', isValidPhone );
       return isValidPhone;
     });
   }),
