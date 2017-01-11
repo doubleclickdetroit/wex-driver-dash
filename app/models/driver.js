@@ -17,4 +17,10 @@ export default DS.Model.extend({
     const phone = this.get( 'phone' );
     return !!phone && phone.match( /\d/g ).length === 10;
   }),
+
+  isPhoneDirty: Ember.computed('phone', function() {
+    const changedAttributes = this.changedAttributes();
+    if ( !changedAttributes.phone ) { return false; }
+    return ( changedAttributes.phone[0] !== changedAttributes.phone[1] );
+  }),
 });
