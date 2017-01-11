@@ -24,6 +24,7 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   // Fontello
+  app.import( 'vendor/fontello/css/animation.css' );
   app.import( 'vendor/fontello/css/fontello.css' );
   app.import( 'vendor/fontello/font/fontello.eot', { destDir: 'font' } );
   app.import( 'vendor/fontello/font/fontello.woff2', { destDir: 'font' } );
