@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   phone:  '',
   buffer: '',
 
+  hasError:     false,
   isEditable:   false,
   displayPhone: false,
 
@@ -18,11 +19,22 @@ export default Ember.Component.extend({
     });
   }),
 
+  updateHasError: Ember.observer('buffer', function() {
+    if ( this.get('hasError') && this.validateBuffer() ) {
+      this.set( 'hasError', false );
+    }
+  }),
+
+  validateBuffer() {
+    const buffer = this.get( 'buffer' );
+    return !!buffer && buffer.match( /\d/g ).length === 10;
+  },
+
   closeField() {
+    this.set( 'hasError', false );
+
     // allow `toDown` transition to completes before toggle isEditable
-    Ember.run.later(() => {
-      this.send( 'handleIsEditable', false );
-    }, 500);
+    Ember.run.later(() => { this.send( 'handleIsEditable', false ); }, 500);
 
     if ( !this.get('buffer') ) {
       this.set( 'displayPhone', false );
@@ -42,10 +54,12 @@ export default Ember.Component.extend({
       this.set( 'buffer', '' );
     },
 
-
     handleEnterKey() {
-      this.set( 'phone', this.get('buffer') );
-      this.closeField();
+      if ( this.validateBuffer() ) {
+        this.set( 'phone', this.get('buffer') );
+        this.closeField();
+      }
+      else { this.set( 'hasError', true ); }
     },
     handleEscapeKey() {
       this.set( 'buffer', this.get('phone') );
