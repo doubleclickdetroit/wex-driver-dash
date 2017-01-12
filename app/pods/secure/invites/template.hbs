@@ -27,7 +27,7 @@
 
             <tbody>
               {{#each model as |driver|}}
-                {{#driver-details driver tagName="tr" as |detail|}}
+                {{#driver-details driver tagName="tr" onUpdatePhone=(action 'handleToggleItemCheckbox' driver) as |detail|}}
                   <td>{{ detail.lastName }}</td>
                   <td>{{ detail.firstName }}</td>
                   <td>{{ detail.driverId }}</td>

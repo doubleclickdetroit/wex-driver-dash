@@ -13,14 +13,14 @@ export default Ember.Controller.extend({
     return this.get( 'checkedItems.length' ) === this.get( 'allValidItems.length' );
   }),
 
-  isValidPhoneDidChange: Ember.observer('allValidItems.@each.isPhoneDirty', function() {
-    const dirtyModels = this.get( 'allValidItems' ).filterBy( 'isPhoneDirty', true );
-    Ember.A( dirtyModels ).setEach( 'isChecked', true );
-  }),
-
   actions: {
     handleToggleAll(isChecked) {
       this.get( 'allValidItems' ).setEach( 'isChecked', isChecked );
+    },
+
+    handleToggleItemCheckbox(driver) {
+      const isValidPhone = driver.get( 'isValidPhone' );
+      driver.set( 'isChecked', isValidPhone );
     }
   }
 });

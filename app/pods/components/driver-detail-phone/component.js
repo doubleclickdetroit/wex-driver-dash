@@ -61,6 +61,7 @@ export default Ember.Component.extend({
       if ( this.validateBuffer() ) {
         this.set( 'phone', this.get('buffer') );
         this.closeField();
+        this.sendAction( 'onUpdatePhone' );
       }
       else { this.set( 'hasError', true ); }
     },
