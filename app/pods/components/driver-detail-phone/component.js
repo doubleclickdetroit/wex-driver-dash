@@ -27,7 +27,7 @@ export default Ember.Component.extend({
 
   validateBuffer() {
     const buffer = this.get( 'buffer' );
-    return !!buffer && buffer.match( /\d/g ).length === 10;
+    return buffer === '' || buffer.match( /\d/g ).length === 10;
   },
 
   closeField() {
