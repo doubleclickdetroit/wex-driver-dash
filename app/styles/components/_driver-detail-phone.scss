@@ -1,0 +1,38 @@
+.component-driver-detail-phone {
+  $field-indent: .5rem;
+
+  .isEditable {
+    padding-right: $field-indent;
+  }
+
+  .phone-input {
+    &.has-error {
+      border: 1px solid #910000;
+    }
+  }
+
+  .error-container {
+    display: flex;
+    position: absolute;
+    top:   0;
+    right: 0;
+    height: 100%;
+    align-items: center;
+    color: #910000;
+
+    .icon-attention-circled {
+      cursor: pointer;
+    }
+
+    .component-tooltip-text::after {
+      font-size: rem-calc(13);
+    }
+  }
+
+  .icon-cancel-circled {
+    position: absolute;
+    top:   8px;
+    right: calc(#{$field-indent} + 5px);
+    cursor: pointer;
+  }
+}

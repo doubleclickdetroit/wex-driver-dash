@@ -22,3 +22,29 @@ test('has a fullName computed property', function(assert) {
     assert.equal( model.get('fullName'), `${firstName} ${lastName}` );
   });
 });
+
+test('has a isValidPhone computed property', function(assert) {
+  const model = this.subject();
+
+  Ember.run(() => {
+    assert.expect(6);
+
+    model.set( 'phone', '2075551212' );
+    assert.ok( model.get('isValidPhone') );
+
+    model.set( 'phone', '(207) 555-1212' );
+    assert.ok( model.get('isValidPhone') );
+
+    model.set( 'phone', '207 555 1212' );
+    assert.ok( model.get('isValidPhone') );
+
+    model.set( 'phone', '207' );
+    assert.equal( model.get('isValidPhone'), false );
+
+    model.set( 'phone', '' );
+    assert.equal( model.get('isValidPhone'), false );
+
+    model.set( 'phone', null );
+    assert.equal( model.get('isValidPhone'), false );
+  });
+})

@@ -1,0 +1,26 @@
+{{#liquid-if displayPhone class="phone"}}
+  {{#liquid-if isEditable class="isEditable"}}
+
+    {{masked-input mask="111-111-1111" placeholderChar=" " value=buffer class=(concat "phone-input " (if hasError "has-error")) insert-newline="handleEnterKey" escape-press="handleEscapeKey"}}
+    <i class="icon-cancel-circled" {{action "handleClearBuffer"}}></i>
+
+  {{else}}
+
+    <div class="phone-text" {{action "handleIsEditable"}}>{{format-phone phone}}</div>
+
+  {{/liquid-if}}
+{{else}}
+
+  <a href="#" {{action 'handleAddPhone'}}>
+    <i class="icon-plus-circled"></i>add
+  </a>
+
+{{/liquid-if}}
+
+{{#if hasError}}
+  <div class="error-container">
+    {{#tooltip-text text="Phone Number must be valid format." class="tooltip-right"}}
+      <i class="icon-attention-circled"></i>
+    {{/tooltip-text}}
+  </div>
+{{/if}}

@@ -20,16 +20,19 @@
 
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     padding: $spacing;
 
+    .drivers-selected {
+      display: inline-block;
+    }
     .pagination {
       margin-bottom: 0;
     }
     .button {
-      position: absolute;
-      right:  $spacing;
-      bottom: $spacing;
+      // position: absolute;
+      // right:  $spacing;
+      // bottom: $spacing;
       margin: 0;
       padding-left:  rem-calc(30);
       padding-right: rem-calc(30);
@@ -43,11 +46,8 @@
    */
   .phone {
     position: relative;
-
-    input {
-      position: absolute;
-      top: -1.20rem;
-    }
+    margin-top:    -.75rem;
+    margin-bottom: -.75rem;
   }
   .uninvited {
     color: #ccc;
@@ -68,9 +68,17 @@
       text-decoration: underline;
     }
   }
+  .driver-access {
+    margin-top:    -.75rem;
+    margin-bottom: -.75rem;
+
+    .icon-spin3 {
+      font-size: rem-calc(13);
+    }
+  }
   .invited {
-    position: absolute;
-    top: .35rem;
+    // position: absolute;
+    // top: .35rem;
     padding-left: rem-calc(20);
 
     &::before {
