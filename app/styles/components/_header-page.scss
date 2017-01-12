@@ -3,8 +3,8 @@
 
   .content-title,
   .content-partners {
-    padding-top:    rem-calc(30);
-    padding-bottom: rem-calc(30);
+    padding-top:    rem-calc(15);
+    padding-bottom: rem-calc(15);
   }
 
   .content-title {
@@ -39,6 +39,11 @@
     }
 
     .partner-logo {
+      img {
+        display: inline-block;
+        max-width: rem-calc(35);
+      }
+
       &:not(:last-of-type) {
         margin-right: rem-calc(10);
       }
