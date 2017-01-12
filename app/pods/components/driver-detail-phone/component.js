@@ -34,7 +34,10 @@ export default Ember.Component.extend({
     this.set( 'hasError', false );
 
     // allow `toDown` transition to completes before toggle isEditable
-    Ember.run.later(() => { this.send( 'handleIsEditable', false ); }, 500);
+    Ember.run.later(() => {
+      if ( this.isDestroyed ) { return; } // teardown in tests may have already taken place
+      this.send( 'handleIsEditable', false );
+    }, 500);
 
     if ( !this.get('buffer') ) {
       this.set( 'displayPhone', false );

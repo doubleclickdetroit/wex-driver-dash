@@ -48,24 +48,17 @@ test('should display an input when "add" link is clicked', function(assert) {
 });
 
 test('should display a phone value that can be edited, when clicked', function(assert) {
-  // using a factory breaks the test
   const phoneBegin = '207-523-6938';
-  this.set( 'driverData', { phone: phoneBegin } );
+  this.set( 'driverData', { phone: phoneBegin } ); // using a factory breaks the test
 
   this.render(hbs`{{driver-detail-phone phone=driverData.phone}}`);
-
   assert.equal( this.$().text().trim(), phoneBegin, 'initial phone value' );
 
   this.$( '.phone-text' ).click();
   assert.equal( this.$('.phone-input').length, 1, 'field to edit phone is visible' );
 
-  const phoneEnd = '800-555-1212';
-  this.$( '.phone-input' ).val( phoneEnd );
-  this.$( '.phone-input' ).change();
-
-  // keyEvent( '.phone-input', 'keypress', 13 );
-  var enterKey = $.Event("keydown", { keyCode: 13 });
-  this.$( '.phone-input' ).trigger( enterKey );
-
+  const phoneEnd = '111-111-1111';
+  const enterKey = $.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
+  this.$( '.phone-input' ).val( phoneEnd ).trigger( enterKey );
   assert.equal( this.$().text().trim(), phoneEnd, 'new phone value' );
 });
