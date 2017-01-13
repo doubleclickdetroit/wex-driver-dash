@@ -7,5 +7,5 @@ export default Ember.Component.extend({
     }
   }
 }).reopenClass({
-  positionalParams: [ 'data' ]
+  positionalParams: [ 'driver' ]
 });
