@@ -1,8 +1,16 @@
-{{#if isCurrent}}
+{{#if driver.isInviteCurrent class="driver-access"}}
+
   <div class="invited">
     <p class="status">Invite Sent</p>
-    <p class="expiration">Expires in {{moment-from-now expiresAt}}</p>
+    <p class="expiration">Expires in {{moment-from-now driver.inviteExpiresAt}}</p>
   </div>
+
+{{else if driver.isSaving}}
+
+  <i class="icon-spin3 animate-spin"></i>
+
 {{else}}
+
   <div class="uninvited">&mdash;</div>
+
 {{/if}}
