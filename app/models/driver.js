@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import { validatePhone } from '../helpers/validate-phone';
 
 export default DS.Model.extend({
   firstName: DS.attr(),
@@ -14,13 +15,6 @@ export default DS.Model.extend({
   }),
 
   isValidPhone: Ember.computed('phone', function() {
-    const phone = this.get( 'phone' );
-    return !!phone && phone.match( /\d/g ).length === 10;
-  }),
-
-  isPhoneDirty: Ember.computed('phone', function() {
-    const changedAttributes = this.changedAttributes();
-    if ( !changedAttributes.phone ) { return false; }
-    return ( changedAttributes.phone[0] !== changedAttributes.phone[1] );
+    return validatePhone( this.get('phone') );
   }),
 });
