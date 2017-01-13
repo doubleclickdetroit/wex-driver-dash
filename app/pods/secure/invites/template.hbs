@@ -32,13 +32,7 @@
                   <td>{{ detail.firstName }}</td>
                   <td>{{ detail.driverId }}</td>
                   <td>{{ detail.phone }}</td>
-                  <td>
-                    {{!-- <div class="uninvited">&mdash;</div> --}}
-                    <div class="invited">
-                      <p class="status">Invite Sent</p>
-                      <p class="expiration">Expires in 5 days</p>
-                    </div>
-                  </td>
+                  <td>{{ detail.invite }}</td>
                   <td>{{input type="checkbox" checked=driver.isChecked disabled=(not driver.isValidPhone)}}</td>
                 {{/driver-details}}
               {{/each}}

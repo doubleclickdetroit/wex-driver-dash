@@ -1,0 +1,8 @@
+{{#if isCurrent}}
+  <div class="invited">
+    <p class="status">Invite Sent</p>
+    <p class="expiration">Expires in {{moment-from-now expiresAt}}</p>
+  </div>
+{{else}}
+  <div class="uninvited">&mdash;</div>
+{{/if}}
