@@ -1,11 +1,15 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import moment from 'moment';
+import { validatePhone } from '../helpers/validate-phone';
 
 export default DS.Model.extend({
   firstName: DS.attr(),
   lastName:  DS.attr(),
   phone:     DS.attr(),
   driverId:  DS.attr( 'number' ),
+  inviteExpiresAt:   DS.attr( 'date' ),
+  confirmAcceptedAt: DS.attr( 'date' ),
 
   fullName: Ember.computed('firstName', 'lastName', function() {
     const firstName = this.get( 'firstName' );
@@ -14,13 +18,26 @@ export default DS.Model.extend({
   }),
 
   isValidPhone: Ember.computed('phone', function() {
-    const phone = this.get( 'phone' );
-    return !!phone && phone.match( /\d/g ).length === 10;
+    return validatePhone( this.get('phone') );
   }),
 
-  isPhoneDirty: Ember.computed('phone', function() {
-    const changedAttributes = this.changedAttributes();
-    if ( !changedAttributes.phone ) { return false; }
-    return ( changedAttributes.phone[0] !== changedAttributes.phone[1] );
+  isConfirmed: Ember.computed('confirmAcceptedAt', function() {
+    return this.get( 'confirmAcceptedAt' ) instanceof Date;
   }),
+
+  hasInvite: Ember.computed('inviteExpiresAt', function() {
+    return this.get( 'inviteExpiresAt' ) instanceof Date;
+  }),
+
+  isInviteCurrent: Ember.computed('hasInvite', function() {
+    const hasInvite = this.get( 'hasInvite' ),
+          expiresAt = moment( this.get('inviteExpiresAt') ),
+          startDate = moment().startOf( 'day' ),
+          endDate   = moment().add( 5, 'days' ).endOf( 'day' ),
+          isBetween = expiresAt.isBetween( startDate, endDate, 'days', '[]' );
+
+    return hasInvite && isBetween;
+  }),
+
+  isInviteExpired: Ember.computed.equal( 'isInviteCurrent', false )
 });

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default function() {
 
   // These comments are here to help you get started. Feel free to delete them.
@@ -24,4 +26,10 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
   this.get( '/drivers' );
+  this.put('/drivers/:id', function({ drivers }, request) {
+    let id = request.params.id;
+    let attrs = this.normalizedRequestAttrs();
+    attrs.inviteExpiresAt = moment().add( 2, 'days' ).toDate();
+    return drivers.find( id ).update( attrs );
+  });
 }

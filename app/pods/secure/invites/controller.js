@@ -21,6 +21,12 @@ export default Ember.Controller.extend({
     handleToggleItemCheckbox(driver) {
       const isValidPhone = driver.get( 'isValidPhone' );
       driver.set( 'isChecked', isValidPhone );
+    },
+
+    handleInviteDrivers() {
+      this.get( 'checkedItems' ).forEach(driver => {
+        driver.save().then( () => driver.set('isChecked', false) );
+      });
     }
   }
 });

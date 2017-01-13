@@ -1,11 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  actions: {
-    handleUpdatePhone() {
-      this.sendAction( 'onUpdatePhone' );
-    }
-  }
 }).reopenClass({
   positionalParams: [ 'driver' ]
 });

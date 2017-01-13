@@ -32,13 +32,7 @@
                   <td>{{ detail.firstName }}</td>
                   <td>{{ detail.driverId }}</td>
                   <td>{{ detail.phone }}</td>
-                  <td>
-                    {{!-- <div class="uninvited">&mdash;</div> --}}
-                    <div class="invited">
-                      <p class="status">Invite Sent</p>
-                      <p class="expiration">Expires in 5 days</p>
-                    </div>
-                  </td>
+                  <td>{{ detail.invite }}</td>
                   <td>{{input type="checkbox" checked=driver.isChecked disabled=(not driver.isValidPhone)}}</td>
                 {{/driver-details}}
               {{/each}}
@@ -46,7 +40,7 @@
           </table>
 
           <footer class="accordion-item-footer">
-            <button class="button">
+            <button class="button" {{action 'handleInviteDrivers'}}>
               Invite
               {{#liquid-if (gt checkedItems.length 0) class="drivers-selected"}}<small>({{checkedItems.length}})</small>{{/liquid-if}}
             </button>

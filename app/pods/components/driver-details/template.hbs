@@ -1,4 +1,5 @@
-{{yield (hash firstName=data.firstName
-              lastName=data.lastName
-              driverId=data.driverId
-              phone=(component 'driver-detail-phone' phone=data.phone onUpdatePhone=(action 'handleUpdatePhone')))}}
+{{yield (hash firstName=driver.firstName
+              lastName=driver.lastName
+              driverId=driver.driverId
+              phone=(component 'driver-detail-phone' phone=driver.phone onUpdatePhone=(action 'handleUpdatePhone'))
+              invite=(component 'driver-detail-invite' driver))}}
