@@ -1,15 +1,57 @@
-import { test } from 'qunit';
+import { test, equal } from 'qunit';
+import wait from 'ember-test-helpers/wait';
 import moduleForAcceptance from 'driver-dash/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | secure/invites');
 
 test('visiting /secure/invites', function(assert) {
   server.createList( 'driver', 3 );
+  visit( '/secure/invites' );
 
-  visit('/secure/invites');
-
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), '/secure/invites');
-    assert.equal(find('.accordion-item:first .accordion-content tbody tr').length, 3);
+    assert.equal(find('.accordion-item:first .accordion-content tbody tr').length, 3, '3 rows should be rendered');
+  });
+});
+
+test('0 drivers should result in appropriate messaging', function(assert) {
+  server.createList( 'driver', 0 );
+  visit( '/secure/invites' );
+
+  andThen(() => {
+    assert.ok( find('.no-content').is(':visible'), 'no drivers to select messaging is displayed' );
+  });
+});
+
+test('send invites button should be disabled', function(assert) {
+  server.createList( 'driver', 1 );
+  visit( '/secure/invites' );
+
+  andThen(() => {
+    assert.ok( find('.accordion-item-footer .button').is(':disabled'), 'invite drivers button is disabled' );
+  });
+});
+
+test('modify driver phone and invite driver', function(assert) {
+  server.createList( 'driver', 1 );
+  visit( '/secure/invites' );
+
+  click( '.phone-text' );
+  fillIn( '.phone-input', '800-555-1212' );
+  keyEvent( '.phone-input', 'keyup', 13 );
+
+  andThen(() => {
+    assert.ok( find('.ember-checkbox').is(':checked'), 'driver row has checked checkbox' );
+    assert.ok( find('.accordion-item-footer .button').is(':enabled'), 'invite driver button is enabled' );
+
+    click( '.accordion-item-footer .button' );
+
+    andThen(() => {
+      wait().then(() => {
+        assert.ok( find('.invited').is(':visible'), 'driver invite status should be visible' );
+        assert.ok( find('.ember-checkbox').is(':not(:checked)'), 'driver row checkbox is unchecked' );
+        assert.ok( find('.accordion-item-footer .button').is(':disabled'), 'invite driver button is disabled' );
+      });
+    });
   });
 });
