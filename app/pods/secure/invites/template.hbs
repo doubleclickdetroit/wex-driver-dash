@@ -40,7 +40,7 @@
           </table>
 
           <footer class="accordion-item-footer">
-            <button class="button" {{action 'handleInviteDrivers'}}>
+            <button class="button" disabled={{isInvitingDisabled}} {{action 'handleInviteDrivers'}}>
               Invite
               {{#liquid-if (gt checkedItems.length 0) class="drivers-selected"}}<small>({{checkedItems.length}})</small>{{/liquid-if}}
             </button>

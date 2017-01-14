@@ -13,6 +13,8 @@ export default Ember.Controller.extend({
     return this.get( 'checkedItems.length' ) === this.get( 'allValidItems.length' );
   }),
 
+  isInvitingDisabled: Ember.computed.equal( 'checkedItems.length', 0 ),
+
   actions: {
     handleToggleAll(isChecked) {
       this.get( 'allValidItems' ).setEach( 'isChecked', isChecked );
