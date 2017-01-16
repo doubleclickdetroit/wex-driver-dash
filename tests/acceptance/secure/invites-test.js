@@ -1,4 +1,4 @@
-import { test, equal } from 'qunit';
+import { test } from 'qunit';
 import wait from 'ember-test-helpers/wait';
 import moduleForAcceptance from 'driver-dash/tests/helpers/module-for-acceptance';
 

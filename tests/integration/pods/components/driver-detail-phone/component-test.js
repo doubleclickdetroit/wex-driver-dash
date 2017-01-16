@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import wait from 'ember-test-helpers/wait';
 import hbs from 'htmlbars-inline-precompile';
@@ -56,7 +57,7 @@ test('should display a phone value that can be edited, when clicked', function(a
   assert.equal( this.$('.phone-input').is(':visible'), true, 'field to edit phone is visible' );
 
   const phoneEnd = '111-111-1111';
-  const enterKey = $.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
+  const enterKey = Ember.$.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
   this.$( '.phone-input' ).val( phoneEnd ).trigger( enterKey );
   assert.equal( this.$().text().trim(), phoneEnd, 'new phone value' );
 });
@@ -69,7 +70,7 @@ test('should display an error when edited with an invalid value, and submitted',
 
   this.render(hbs`{{driver-detail-phone phone=driverData.phone}}`);
 
-  let enterKey = $.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
+  let enterKey = Ember.$.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
   this.$( '.phone-text' ).click();
   this.$( '.phone-input' ).val( '123' ).trigger( enterKey );
 
@@ -77,7 +78,7 @@ test('should display an error when edited with an invalid value, and submitted',
   assert.equal( this.$('.error-container').is(':visible'), true, 'error container is visible' );
 
   const phoneEnd = '111-111-1111';
-  enterKey = $.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
+  enterKey = Ember.$.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
   this.$( '.phone-input' ).val( phoneEnd ).trigger( enterKey );
 
   return wait().then(() => {
@@ -100,7 +101,7 @@ test('should close text field when ESCAPE key is pressed and display original va
   this.$( '.phone-text' ).click();
   this.$( '.phone-input' ).val( '248-956-0605' );
 
-  let escKey = $.Event('keyup', { which: 27, keyCode: 27, charCode: 27 });
+  let escKey = Ember.$.Event('keyup', { which: 27, keyCode: 27, charCode: 27 });
   this.$( '.phone-input' ).trigger( escKey );
 
   return wait().then(() => {
@@ -118,7 +119,7 @@ test('should close text field and display "add" hyperlink when submitted without
   this.render(hbs`{{driver-detail-phone phone=driverData.phone}}`);
   assert.equal( this.$().text().trim(), phone, 'original phone value is displayed' );
 
-  const enterKey = $.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
+  const enterKey = Ember.$.Event('keyup', { which: 13, keyCode: 13, charCode: 13 });
   this.$( '.phone-text' ).click();
   this.$( '.phone-input' ).val( '' ).trigger( enterKey );
 
