@@ -3,30 +3,29 @@
   {{#block-slot 'subtitle'}}Drivers must have a unique mobile phone number to be invited to DriverDash.{{/block-slot}}
 {{/header-page}}
 
-
 <div class="page-invites">
 
   {{#zf-accordion data-multi-expand="true" data-allow-all-closed="true"}}
     <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
-      <a class="accordion-title">Send Invites <span class="items-count">{{pluralize model.length 'Driver'}}</span></a>
+      <a class="accordion-title">Send Invites <span class="items-count">{{pluralize sortedDrivers.length 'Driver'}}</span></a>
       <div class="accordion-content" data-tab-content>
 
-        {{#if model.length}}
+        {{#if sortedDrivers.length}}
 
           <table>
             <thead>
               <tr>
-                <th>Last Name</th>
+                <th>{{sort-column "lastName" "Last Name" sortBy=(mut sortBy)}}</th>
                 <th>First Name</th>
                 <th>Driver ID</th>
                 <th>Mobile Phone #</th>
-                <th>DriverDash Access</th>
+                <th>{{sort-column "inviteExpiresAt" "DriverDash Access" sortBy=(mut sortBy)}}</th>
                 <th class="actions"><input type="checkbox" checked={{isAllChecked}} onchange={{action "handleToggleAll" value="target.checked"}}></th>
               </tr>
             </thead>
 
             <tbody>
-              {{#each model as |driver|}}
+              {{#each sortedDrivers as |driver|}}
                 {{#driver-details driver tagName="tr" onUpdatePhone=(action 'handleToggleItemCheckbox' driver) as |detail|}}
                   <td>{{ detail.lastName }}</td>
                   <td>{{ detail.firstName }}</td>
