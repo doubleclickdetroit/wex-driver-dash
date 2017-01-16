@@ -8,10 +8,10 @@
 
   {{#zf-accordion data-multi-expand="true" data-allow-all-closed="true"}}
     <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
-      <a class="accordion-title">Send Invites <span class="items-count">{{pluralize model.length 'Driver'}}</span></a>
+      <a class="accordion-title">Send Invites <span class="items-count">{{pluralize sortedDrivers.length 'Driver'}}</span></a>
       <div class="accordion-content" data-tab-content>
 
-        {{#if model.length}}
+        {{#if sortedDrivers.length}}
 
           <table>
             <thead>
@@ -26,7 +26,7 @@
             </thead>
 
             <tbody>
-              {{#each model as |driver|}}
+              {{#each sortedDrivers as |driver|}}
                 {{#driver-details driver tagName="tr" onUpdatePhone=(action 'handleToggleItemCheckbox' driver) as |detail|}}
                   <td>{{ detail.lastName }}</td>
                   <td>{{ detail.firstName }}</td>

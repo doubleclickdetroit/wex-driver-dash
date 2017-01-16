@@ -1,12 +1,24 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  allValidItems: Ember.computed('model.@each.isValidPhone', function() {
-    return this.get( 'model' ).filter( item => item.get('isValidPhone') );
+  sortedDrivers: Ember.computed.alias( 'sortedItems' ),
+
+  // Sorting Properties
+  sortedItems: Ember.computed.sort( 'model', 'sortDefinition' ),
+
+  sortBy: 'lastName:asc',
+
+  sortDefinition: Ember.computed('sortBy', function() {
+    return [ this.get('sortBy') ];
   }),
 
-  checkedItems: Ember.computed('model.@each.isChecked', function() {
-    return this.get( 'model' ).filterBy( 'isChecked', true );
+  // Checkbox Properties
+  allValidItems: Ember.computed('sortedItems.@each.isValidPhone', function() {
+    return this.get( 'sortedItems' ).filter( item => item.get('isValidPhone') );
+  }),
+
+  checkedItems: Ember.computed('sortedItems.@each.isChecked', function() {
+    return this.get( 'sortedItems' ).filterBy( 'isChecked', true );
   }),
 
   isAllChecked: Ember.computed('allValidItems', 'checkedItems.@each.isChecked', function() {
@@ -17,7 +29,7 @@ export default Ember.Controller.extend({
 
   actions: {
     handleToggleAll(isChecked) {
-      this.get( 'allValidItems' ).setEach( 'isChecked', isChecked );
+      Ember.A( this.get('allValidItems') ).setEach( 'isChecked', isChecked );
     },
 
     handleToggleItemCheckbox(driver) {

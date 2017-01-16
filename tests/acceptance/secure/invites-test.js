@@ -55,3 +55,17 @@ test('modify driver phone and invite driver', function(assert) {
     });
   });
 });
+
+test('sort drivers by last name', function(assert) {
+  server.create( 'driver', { lastName: 'Campbell' } );
+  server.create( 'driver', { lastName: 'Thompson' } );
+  server.create( 'driver', { lastName: 'Babics' } );
+
+  visit( '/secure/invites' );
+
+  andThen(() => {
+    assert.equal( find('.accordion-item:first tbody tr:eq(0) td:eq(0)').text().trim(), 'Babics' );
+    assert.equal( find('.accordion-item:first tbody tr:eq(1) td:eq(0)').text().trim(), 'Campbell' );
+    assert.equal( find('.accordion-item:first tbody tr:eq(2) td:eq(0)').text().trim(), 'Thompson' );
+  });
+});
