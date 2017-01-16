@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   // Sorting Properties
   sortedItems: Ember.computed.sort( 'model', 'sortDefinition' ),
 
-  sortBy: 'lastName:asc',
+  sortBy: 'lastName',
 
   sortDefinition: Ember.computed('sortBy', function() {
     return [ this.get('sortBy') ];
