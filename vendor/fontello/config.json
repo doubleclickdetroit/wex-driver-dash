@@ -55,18 +55,6 @@
       "src": "entypo"
     },
     {
-      "uid": "94103e1b3f1e8cf514178ec5912b4469",
-      "css": "sort-down",
-      "code": 61661,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "65b3ce930627cabfb6ac81ac60ec5ae4",
-      "css": "sort-up",
-      "code": 61662,
-      "src": "fontawesome"
-    },
-    {
       "uid": "4ba33d2607902cf690dd45df09774cb0",
       "css": "plus-circled",
       "code": 59399,
