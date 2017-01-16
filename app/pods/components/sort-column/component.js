@@ -22,7 +22,7 @@ export default Ember.Component.extend({
     return true;
   }),
 
-  sortByColumn() {
+  click() {
     const term = this.get( 'term' );
 
     if ( this.get('isTermCurrent') ) {
@@ -33,12 +33,6 @@ export default Ember.Component.extend({
       this.set( 'sortBy', `${term}:asc` );
     }
   },
-
-  actions: {
-    handleToggleSortAscending() {
-      this.sortByColumn();
-    }
-  }
 }).reopenClass({
   positionalParams: [ 'term', 'label' ]
 });
