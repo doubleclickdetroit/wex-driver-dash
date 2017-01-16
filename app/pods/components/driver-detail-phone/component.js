@@ -51,7 +51,7 @@ export default Ember.Component.extend({
     },
     handleIsEditable(isEditable=true) {
       this.set( 'isEditable', isEditable );
-      Ember.run.later(() => { $( '.phone-input' ).focus(); }, 500);
+      Ember.run.later(() => { Ember.$( '.phone-input' ).focus(); }, 500);
     },
     handleClearBuffer() {
       this.set( 'buffer', '' );

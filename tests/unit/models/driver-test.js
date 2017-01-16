@@ -48,7 +48,7 @@ test('has a computed property "isValidPhone"', function(assert) {
     model.set( 'phone', null );
     assert.equal( model.get('isValidPhone'), false );
   });
-})
+});
 
 test('has a computed property "isConfirmed"', function(assert) {
   const model = this.subject();

@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
