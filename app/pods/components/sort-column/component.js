@@ -1,23 +1,24 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
-  sortBy:        '',
-  sortAscending: true,
+  sortBy: '',
 
   sortByTerm: Ember.computed('sortBy', function() {
     return this.get( 'sortBy' ).split( ':' )[0];
+  }),
+
+  sortByDirection: Ember.computed('sortBy', function() {
+    return this.get( 'sortBy' ).split( ':' )[1] || 'asc';
   }),
 
   isTermCurrent: Ember.computed('term', 'sortByTerm', function() {
     return this.get( 'term' ) === this.get( 'sortByTerm' );
   }),
 
-  isAscending: Ember.computed('isTermCurrent', 'sortAscending', function() {
+  isAscending: Ember.computed('isTermCurrent', 'sortByDirection', function() {
     if ( this.get('isTermCurrent') ) {
-      return this.get( 'sortAscending' );
+      return this.get( 'sortByDirection' ) === 'asc';
     }
-
     return true;
   }),
 
@@ -25,15 +26,11 @@ export default Ember.Component.extend({
     const term = this.get( 'term' );
 
     if ( this.get('isTermCurrent') ) {
-      this.toggleProperty( 'sortAscending' );
-      const dir = this.get( 'isAscending' ) ? 'asc' : 'desc';
+      const dir = this.get( 'isAscending' ) ? 'desc' : 'asc';
       this.set( 'sortBy', `${term}:${dir}` );
     }
     else {
-      this.setProperties({
-        sortBy: `${term}:asc`,
-        sortAscending: true
-      });
+      this.set( 'sortBy', `${term}:asc` );
     }
   },
 
@@ -42,7 +39,6 @@ export default Ember.Component.extend({
       this.sortByColumn();
     }
   }
-
 }).reopenClass({
   positionalParams: [ 'term', 'label' ]
 });

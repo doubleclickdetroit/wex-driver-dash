@@ -20,16 +20,10 @@ test('it renders either positional param or as block statement', function(assert
 });
 
 test('it changes sort icon by sortAscending property', function(assert) {
-  this.setProperties({
-    sortBy: 'lastName',
-    sortAscending: true
-  });
+  this.set( 'sortBy', 'lastName' );
 
-  this.render(hbs`{{sort-column "lastName" "My Label" sortBy=(mut sortBy) sortAscending=(mut sortAscending)}}`);
+  this.render(hbs`{{sort-column "lastName" "My Label" sortBy=(mut sortBy)}}`);
   assert.equal( this.$('.icon-sort-up').length, 1, 'sortAscending default value is ascending' );
-
-  this.set( 'sortAscending', false );
-  assert.equal( this.$('.icon-sort-down').length, 1, 'sortAscending manually changed to descending' );
 
   this.$( '.icon-sort-down' ).click();
   assert.equal( this.$('.icon-sort-up').length, 1, 'click changed sortAscending to ascending' );
@@ -39,29 +33,19 @@ test('it changes sort icon by sortAscending property', function(assert) {
 });
 
 test('it displays ascending when not the active sortBy term', function(assert) {
-  this.setProperties({
-    sortBy: 'lastName',
-    sortAscending: true
-  });
-
-  this.render(hbs`{{sort-column "lastName" "My Label" sortBy=(mut sortBy) sortAscending=(mut sortAscending)}}`);
+  this.set( 'sortBy', 'lastName' );
+  this.render(hbs`{{sort-column "lastName" "My Label" sortBy=(mut sortBy)}}`);
 
   this.$( '.icon-sort-up' ).click();
   assert.equal( this.$('.icon-sort-down').length, 1, 'click changed sortAscending to descending' );
 
-  this.setProperties({
-    sortBy: 'firstName',
-    sortAscending: true
-  });
+  this.set( 'sortBy', 'firstName' );
   assert.equal( this.$('.icon-sort-up').length, 1, 'defaults to ascending' );
 
-  this.set( 'sortAscending', false );
+  this.set( 'sortBy', 'firstName:desc' );
   assert.equal( this.$('.icon-sort-up').length, 1, 'maintains ascending while other sortBy term' );
 
-  this.setProperties({
-    sortBy: 'lastName',
-    sortAscending: true
-  });
+  this.set( 'sortBy', 'lastName' );
   assert.equal( this.$('.icon-sort-up').length, 1, 'defaults to ascending with matching sortBy term' );
 
   this.$( '.icon-sort-up' ).click();
