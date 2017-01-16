@@ -1,4 +1,12 @@
 .component-sort-column {
   display: inline-block;
   cursor: pointer;
+
+  .icon-sortable {
+    color: $secondary-color;
+
+    &:not(.is-active) {
+      opacity: .4;
+    }
+  }
 }
