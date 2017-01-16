@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: [ 'component-sort-column' ],
+
   sortBy: '',
 
   sortByTerm: Ember.computed('sortBy', function() {
