@@ -1,0 +1,108 @@
+.page-login {
+  @include grid-row;
+  padding-top: 2rem;
+
+  .wrapper {
+    display: flex;
+    margin-left:  auto;
+    margin-right: auto;
+    width:  800px;
+    background-color: #eee;
+
+    .content,
+    .login-form {
+      flex: 1;
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      .image,
+      .marketing-copy {
+      }
+      .image {
+        // flex: 2;
+        height: 350px;
+        flex-grow: 1;
+        flex-shrink: 1;
+        flex-basis: auto;
+        background: url('images/login-bg.jpg') left center;
+        background-size: cover;
+      }
+      .marketing-copy {
+        // flex: 1;
+        padding: 2rem 2.5rem;
+        color: $white;
+        background-color: #e51937;
+
+        h1 {
+          @include tablet-gothic();
+          font-size: rem-calc(32);
+        }
+        p {
+          font-size: rem-calc(13);
+        }
+        .button {
+          margin-top: .5rem;
+          padding-top:    .6rem;
+          padding-bottom: .5rem;
+          color: $black;
+          @include tablet-gothic(bold);
+          font-size: rem-calc(18);
+          background-color: orange;
+          border-radius: rem-calc(6);
+        }
+      }
+    }
+    .login-form {
+      display: flex;
+      align-items: center;
+
+      .content-form {
+        padding: 2rem 2.5rem;
+
+        .logo {
+          display: inline-block;
+          margin-right: rem-calc(15);
+          width:  rem-calc(70);
+          height: rem-calc(70);
+        }
+
+        h1 {
+          margin-bottom: rem-calc(30);
+          @include tablet-gothic();
+          font-size: rem-calc(32);
+        }
+        p {
+          color: #666;
+          font-size: rem-calc(13);
+          @include open-sans(semibold);
+        }
+
+        form {
+          margin-top: rem-calc(30);
+
+          label {
+            color: #444;
+            @include open-sans(semibold);
+          }
+          input {
+            margin-bottom: rem-calc(20);
+            width: 100%;
+            line-height: rem-calc(26);
+            border: 1px solid #ccc;
+          }
+          .button {
+            margin-top: rem-calc(5);
+            padding-left:  rem-calc(30);
+            padding-right: rem-calc(30);
+            text-transform: uppercase;
+            @include open-sans(semibold);
+            font-size: rem-calc(13);
+            border-radius: rem-calc(4);
+          }
+        }
+      }
+    }
+  }
+}
