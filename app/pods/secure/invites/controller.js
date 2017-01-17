@@ -5,7 +5,10 @@ import computed from 'ember-computed-decorators';
 export default Ember.Controller.extend({
   @alias( 'sortedItems' ) sortedDrivers: null,
 
-  @alias( 'model.firstObject' ) selectedAccount: null,
+  // temporary - #account-hierarchy will set this
+  initSelectedAccount: Ember.observer('model.firstObject', function() {
+    this.set( 'selectedAccount', this.get('model.firstObject') );
+  }),
 
   // Sorting Properties
   sortBy: 'lastName',
@@ -43,6 +46,10 @@ export default Ember.Controller.extend({
     handleToggleItemCheckbox(driver) {
       const isValidPhone = driver.get( 'isValidPhone' );
       driver.set( 'isChecked', isValidPhone );
+    },
+
+    handleUpdateSelectedAccount(account) {
+      this.set( 'selectedAccount', account );
     },
 
     handleInviteDrivers() {

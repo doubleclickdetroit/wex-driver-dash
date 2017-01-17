@@ -5,12 +5,28 @@
 
 <div class="page-invites">
 
+  <div class="button-group">
+    <a class="button">{{ selectedAccount.name }}</a>
+    <a class="dropdown button arrow-only" data-toggle="example-dropdown">
+      <span class="show-for-sr">Show menu</span>
+    </a>
+  </div>
+  {{#zf-dropdown id="example-dropdown"}}
+    {{#each model as |account|}}
+      <div {{action 'handleUpdateSelectedAccount' account}}>
+        <strong>{{ account.name }}</strong><br>
+        <small>#{{ account.accountNumber }} | L{{ account.accountLevel}}</small>
+      </div>
+      <hr>
+    {{/each}}
+  {{/zf-dropdown}}
+
   {{#zf-accordion data-multi-expand="true" data-allow-all-closed="true"}}
     <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
       <a class="accordion-title">Send Invites <span class="items-count">{{pluralize sortedDrivers.length 'Driver'}}</span></a>
       <div class="accordion-content" data-tab-content>
 
-        {{#if sortedDrivers.length}}
+        {{#liquid-if sortedDrivers.length}}
 
           <table>
             <thead>
@@ -49,7 +65,7 @@
 
           <div class="no-content">You currently have no driver to invite, you need to first add them on WexOnline.</div>
 
-        {{/if}}
+        {{/liquid-if}}
 
       </div>
     </li>
