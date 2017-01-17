@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
