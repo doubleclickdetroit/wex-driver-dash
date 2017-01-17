@@ -1,28 +1,30 @@
 import Ember from 'ember';
+import computed from 'ember-computed-decorators';
 
 export default Ember.Component.extend({
   classNames: [ 'component-sort-column' ],
 
   sortBy: '',
 
-  sortByTerm: Ember.computed('sortBy', function() {
-    return this.get( 'sortBy' ).split( ':' )[0];
-  }),
+  @computed( 'sortBy' )
+  sortByTerm( sortBy ) {
+    return sortBy.split( ':' )[0];
+  },
 
-  sortByDirection: Ember.computed('sortBy', function() {
-    return this.get( 'sortBy' ).split( ':' )[1] || 'asc';
-  }),
+  @computed( 'sortBy' )
+  sortByDirection( sortBy ) {
+    return sortBy.split( ':' )[1] || 'asc';
+  },
 
-  isTermCurrent: Ember.computed('term', 'sortByTerm', function() {
-    return this.get( 'term' ) === this.get( 'sortByTerm' );
-  }),
+  @computed( 'term', 'sortByTerm' )
+  isTermCurrent( term, sortByTerm ) {
+    return term === sortByTerm;
+  },
 
-  isAscending: Ember.computed('isTermCurrent', 'sortByDirection', function() {
-    if ( this.get('isTermCurrent') ) {
-      return this.get( 'sortByDirection' ) === 'asc';
-    }
-    return true;
-  }),
+  @computed( 'isTermCurrent', 'sortByDirection' )
+  isAscending( isTermCurrent, sortByDirection ) {
+    return isTermCurrent ? sortByDirection === 'asc' : true;
+  },
 
   click() {
     const term = this.get( 'term' );
