@@ -26,12 +26,16 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
   this.get( '/accounts' );
-  this.get( '/drivers' );
+
+  this.get('/accounts/:id/drivers', function({ accounts }, request) {
+    let id = request.params.id;
+    return accounts.find( id ).drivers;
+  });
 
   this.put('/drivers/:id', function({ drivers }, request) {
-    let id = request.params.id;
-    let attrs = this.normalizedRequestAttrs();
-    attrs.inviteExpiresAt = moment().add( 2, 'days' ).toDate();
+    let id      = request.params.id;
+    let numDays = Math.floor( (Math.random() * 4) + 1 );
+    let attrs = { inviteExpiresAt: moment().add( numDays, 'days' ).toDate() };
     return drivers.find( id ).update( attrs );
   });
 }

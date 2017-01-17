@@ -5,15 +5,16 @@ import computed from 'ember-computed-decorators';
 export default Ember.Controller.extend({
   @alias( 'sortedItems' ) sortedDrivers: null,
 
+  @alias( 'model.firstObject' ) selectedAccount: null,
+
   // Sorting Properties
   sortBy: 'lastName',
 
-  @sort('model', 'sortDefinition' ) sortedItems: null,
+  @sort( 'selectedAccount.drivers', 'sortDefinition' )
+  sortedItems: null,
 
   @computed( 'sortBy' )
-  sortDefinition(sortBy) {
-    return [ sortBy ];
-  },
+  sortDefinition(sortBy) { return [ sortBy ]; },
 
   // Checkbox Properties
   @computed( 'sortedItems.@each.isValidPhone' )
@@ -31,7 +32,8 @@ export default Ember.Controller.extend({
     return allValidItems.length === checkedItems.length;
   },
 
-  @equal( 'checkedItems.length', 0 ) isInvitingDisabled: null,
+  @equal( 'checkedItems.length', 0 )
+  isInvitingDisabled: null,
 
   actions: {
     handleToggleAll(isChecked) {

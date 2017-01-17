@@ -15,7 +15,7 @@ export default function(server) {
     server.create( 'account', { accountLevel: 4 } )
   ]
   .forEach(account => {
-    const n = Math.floor( Math.random() * 5 );
+    const n = Math.floor( (Math.random() * 5) + 1 );
     server.createList( 'driver', n, { accountId: account.id } );
   });
 
