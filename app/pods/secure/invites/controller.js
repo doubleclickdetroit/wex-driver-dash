@@ -1,31 +1,37 @@
 import Ember from 'ember';
+import { alias, sort, equal } from 'ember-computed-decorators';
+import computed from 'ember-computed-decorators';
 
 export default Ember.Controller.extend({
-  sortedDrivers: Ember.computed.alias( 'sortedItems' ),
+  @alias( 'sortedItems' ) sortedDrivers: null,
 
   // Sorting Properties
-  sortedItems: Ember.computed.sort( 'model', 'sortDefinition' ),
-
   sortBy: 'lastName',
 
-  sortDefinition: Ember.computed('sortBy', function() {
-    return [ this.get('sortBy') ];
-  }),
+  @sort('model', 'sortDefinition' ) sortedItems: null,
+
+  @computed( 'sortBy' )
+  sortDefinition(sortBy) {
+    return [ sortBy ];
+  },
 
   // Checkbox Properties
-  allValidItems: Ember.computed('sortedItems.@each.isValidPhone', function() {
-    return this.get( 'sortedItems' ).filter( item => item.get('isValidPhone') );
-  }),
+  @computed( 'sortedItems.@each.isValidPhone' )
+  allValidItems( sortedItems ) {
+    return sortedItems.filter( item => item.get('isValidPhone') );
+  },
 
-  checkedItems: Ember.computed('sortedItems.@each.isChecked', function() {
-    return this.get( 'sortedItems' ).filterBy( 'isChecked', true );
-  }),
+  @computed( 'sortedItems.@each.isChecked' )
+  checkedItems( sortedItems ) {
+    return sortedItems.filterBy( 'isChecked', true );
+  },
 
-  isAllChecked: Ember.computed('allValidItems', 'checkedItems.@each.isChecked', function() {
-    return this.get( 'checkedItems.length' ) === this.get( 'allValidItems.length' );
-  }),
+  @computed( 'allValidItems', 'checkedItems.@each.isChecked' )
+  isAllChecked( allValidItems, checkedItems ) {
+    return allValidItems.length === checkedItems.length;
+  },
 
-  isInvitingDisabled: Ember.computed.equal( 'checkedItems.length', 0 ),
+  @equal( 'checkedItems.length', 0 ) isInvitingDisabled: null,
 
   actions: {
     handleToggleAll(isChecked) {
