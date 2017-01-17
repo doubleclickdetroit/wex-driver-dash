@@ -4,10 +4,16 @@ import { test } from 'qunit';
 import wait from 'ember-test-helpers/wait';
 import moduleForAcceptance from 'driver-dash/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | secure/invites');
+var account;
+
+moduleForAcceptance('Acceptance | secure/invites', {
+  beforeEach() {
+    account = server.create( 'account' );
+  }
+});
 
 test('visiting /secure/invites', function(assert) {
-  server.createList( 'driver', 3 );
+  server.createList( 'driver', 3, { accountId: account.id } );
   visit( '/secure/invites' );
 
   andThen(() => {
@@ -26,7 +32,7 @@ test('0 drivers should result in appropriate messaging', function(assert) {
 });
 
 test('send invites button should be disabled', function(assert) {
-  server.createList( 'driver', 1 );
+  server.createList( 'driver', 1, { accountId: account.id } );
   visit( '/secure/invites' );
 
   andThen(() => {
@@ -35,7 +41,7 @@ test('send invites button should be disabled', function(assert) {
 });
 
 test('modify driver phone and invite driver', function(assert) {
-  server.createList( 'driver', 1 );
+  server.createList( 'driver', 1, { accountId: account.id } );
   visit( '/secure/invites' );
 
   click( '.phone-text' );
@@ -59,9 +65,9 @@ test('modify driver phone and invite driver', function(assert) {
 });
 
 test('sort drivers by last name', function(assert) {
-  server.create( 'driver', { lastName: 'Campbell' } );
-  server.create( 'driver', { lastName: 'Thompson' } );
-  server.create( 'driver', { lastName: 'Babics' } );
+  server.create( 'driver', { lastName: 'Campbell', accountId: account.id } );
+  server.create( 'driver', { lastName: 'Thompson', accountId: account.id } );
+  server.create( 'driver', { lastName: 'Babics', accountId: account.id } );
 
   visit( '/secure/invites' );
 
