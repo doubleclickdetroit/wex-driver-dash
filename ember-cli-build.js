@@ -4,6 +4,9 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
+    babel: {
+      optional: [ 'es7.decorators' ]
+    },
     'ember-cli-foundation-6-sass': {
       'foundationJs': 'all'
       // load js partials: http://foundation.zurb.com/sites/docs/accordion.html#sass-variables
