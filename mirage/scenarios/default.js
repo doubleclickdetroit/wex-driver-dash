@@ -7,5 +7,16 @@ export default function(server) {
     Make sure to define a factory for each model you want to create.
   */
 
-  server.createList( 'driver', 10 );
+  [
+    server.create( 'account', { accountLevel: 1 } ),
+    server.create( 'account', { accountLevel: 2 } ),
+    server.create( 'account', { accountLevel: 2 } ),
+    server.create( 'account', { accountLevel: 3 } ),
+    server.create( 'account', { accountLevel: 4 } )
+  ]
+  .forEach(account => {
+    const n = Math.floor( Math.random() * 5 );
+    server.createList( 'driver', n, { accountId: account.id } );
+  });
+
 }

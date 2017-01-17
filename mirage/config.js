@@ -25,7 +25,9 @@ export default function() {
 
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
+  this.get( '/accounts' );
   this.get( '/drivers' );
+
   this.put('/drivers/:id', function({ drivers }, request) {
     let id = request.params.id;
     let attrs = this.normalizedRequestAttrs();
