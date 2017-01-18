@@ -8,11 +8,11 @@ export default function(server) {
   */
 
   [
-    server.create( 'account', { accountLevel: 1 } ),
-    server.create( 'account', { accountLevel: 2 } ),
-    server.create( 'account', { accountLevel: 2 } ),
-    server.create( 'account', { accountLevel: 3 } ),
-    server.create( 'account', { accountLevel: 4 } )
+    server.create( 'account', { accountLevel: 1, name: 'State of Maine' } ),
+    server.create( 'account', { accountLevel: 2, name: 'Aroostook County' } ),
+    server.create( 'account', { accountLevel: 2, name: 'Cumberland County' } ),
+    server.create( 'account', { accountLevel: 3, name: 'Washington County' } ),
+    server.create( 'account', { accountLevel: 4, name: 'Androscoggin County' } )
   ]
   .forEach(account => {
     const n = Math.floor( (Math.random() * 5) + 1 );
