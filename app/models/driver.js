@@ -1,9 +1,12 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import { belongsTo } from 'ember-data/relationships';
 import moment from 'moment';
 import { validatePhone } from '../helpers/validate-phone';
 
 export default DS.Model.extend({
+  account: belongsTo( 'account' ),
+
   firstName: DS.attr(),
   lastName:  DS.attr(),
   phone:     DS.attr(),

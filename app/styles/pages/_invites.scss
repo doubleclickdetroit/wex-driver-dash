@@ -15,6 +15,15 @@
     }
   }
 
+  .component-button-dropdown {
+    .button-label,
+    .dropdown-item {
+      .account-name {
+        @include open-sans(semibold);
+      }
+    }
+  }
+
   .accordion-item-footer {
     $spacing: rem-calc(15);
 
