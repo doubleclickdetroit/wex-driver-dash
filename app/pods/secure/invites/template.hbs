@@ -5,7 +5,7 @@
 
 <div class="page-invites">
 
-  {{#button-dropdown items=model label=(label-account selectedAccount) selectedItem=selectedAccount as |account|}}
+  {{#button-dropdown items=model label=(label-account selectedAccount) selectedItem=(mut selectedAccount) as |account|}}
     <div class="account-name">{{ account.name }}</div>
     <span class="account-number">#{{ account.accountNumber }}</span>
     <span class="sep">|</span>
