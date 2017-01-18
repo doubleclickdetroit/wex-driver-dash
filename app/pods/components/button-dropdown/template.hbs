@@ -1,0 +1,12 @@
+<div class="button-group" data-toggle="dropdown-{{ dropdownId }}">
+  <div class="button button-label">{{{ label }}}</div>
+  <a class="dropdown button arrow-only"></a>
+</div>
+
+<div id="dropdown-{{ dropdownId }}" class="dropdown-pane" data-dropdown>
+  {{#each items as |item|}}
+    <div class="dropdown-item {{if (eq item selectedItem) 'is-active' ''}}" {{action 'handleUpdateSelectedItem' item}}>
+      {{ yield item }}
+    </div>
+  {{/each}}
+</div>
