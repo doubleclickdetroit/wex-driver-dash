@@ -1,13 +1,14 @@
 /* global Foundation */
 
 import Ember from 'ember';
+import computed from 'ember-computed-decorators';
 
 export default Ember.Component.extend({
   classNames: [ 'component-button-dropdown' ],
 
-  init() {
-    this._super( ...arguments );
-    this.set( 'dropdownId', (new Date()).getMilliseconds() );
+  @computed()
+  dropdownId() {
+    return ( new Date() ).getMilliseconds();
   },
 
   didInsertElement() {
