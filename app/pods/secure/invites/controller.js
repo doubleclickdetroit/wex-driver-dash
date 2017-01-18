@@ -1,14 +1,14 @@
 import Ember from 'ember';
-import { alias, sort, equal } from 'ember-computed-decorators';
+import { alias, sort, equal, observes } from 'ember-computed-decorators';
 import computed from 'ember-computed-decorators';
 
 export default Ember.Controller.extend({
   @alias( 'sortedItems' ) sortedDrivers: null,
 
-  // temporary - #account-hierarchy will set this
-  initSelectedAccount: Ember.observer('model.firstObject', function() {
+  @observes( 'model' )
+  initSelectedAccount() {
     this.set( 'selectedAccount', this.get('model.firstObject') );
-  }),
+  },
 
   // Sorting Properties
   sortBy: 'lastName',
