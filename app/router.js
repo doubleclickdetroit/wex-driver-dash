@@ -6,11 +6,10 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('login', { path: '' });
+  this.route( 'login' );
 
-  this.route('secure', function() {
-    this.route('dashboard', { path: '' });
-    this.route('invites');
+  this.route('secure', { path: '' }, function() {
+    this.route( 'invites' );
   });
 });
 
