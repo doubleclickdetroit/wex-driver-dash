@@ -15,11 +15,25 @@
     }
   }
 
-  .component-button-dropdown {
-    .button-label,
-    .dropdown-item {
-      .account-name {
-        @include open-sans(semibold);
+  .account-selector {
+    @include open-sans(semibold);
+    font-size: rem-calc(14);
+    color: #797979;
+
+    .component-button-dropdown {
+      margin-left: rem-calc(15);
+
+      .button-label,
+      .dropdown-item {
+        .account-name {
+          @include open-sans(semibold);
+        }
+      }
+      .button-label {
+        .sep,
+        .account-number {
+          @include open-sans();
+        }
       }
     }
   }

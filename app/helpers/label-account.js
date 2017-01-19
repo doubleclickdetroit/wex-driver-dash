@@ -10,9 +10,9 @@ export function labelAccount(params) {
 
   return `<span class="account-name">${accountName}</span>
           <span class="sep">|</span>
-          <span class="account-name">#${accountNumber}</span>
+          <span class="account-number">#${accountNumber}</span>
           <span class="sep">|</span>
-          <span class="account-name">L${accountLevel}</span>`;
+          <span class="account-level">L${accountLevel}</span>`;
 }
 
 export default Ember.Helper.helper(labelAccount);

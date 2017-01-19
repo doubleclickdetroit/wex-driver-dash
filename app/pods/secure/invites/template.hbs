@@ -5,12 +5,15 @@
 
 <div class="page-invites">
 
-  {{#button-dropdown items=model label=(label-account selectedAccount) selectedItem=(mut selectedAccount) as |account|}}
-    <div class="account-name">{{ account.name }}</div>
-    <span class="account-number">#{{ account.accountNumber }}</span>
-    <span class="sep">|</span>
-    <span class="account-level">L{{ account.accountLevel }}</span>
-  {{/button-dropdown}}
+  <div class="account-selector">
+    Show drivers for Account:
+    {{#button-dropdown items=model label=(label-account selectedAccount) selectedItem=(mut selectedAccount) as |account|}}
+      <div class="account-name">{{ account.name }}</div>
+      <span class="account-number">#{{ account.accountNumber }}</span>
+      <span class="sep">|</span>
+      <span class="account-level">L{{ account.accountLevel }}</span>
+    {{/button-dropdown}}
+  </div>
 
   {{#zf-accordion data-multi-expand="true" data-allow-all-closed="true"}}
     <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
