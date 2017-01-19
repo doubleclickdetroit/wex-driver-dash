@@ -109,13 +109,13 @@ test('has a computed property "isInviteCurrent"', function(assert) {
     model.set( 'inviteExpiresAt', date );
     assert.equal( model.get('isInviteCurrent'), true, 'when "inviteExpiresAt" is today' );
 
-    date = moment().add( 5, 'days' ).toDate();
+    date = moment().add( 7, 'days' ).toDate();
     model.set( 'inviteExpiresAt', date );
     assert.equal( model.get('isInviteCurrent'), true, 'when "inviteExpiresAt" is within acceptable range' );
 
-    date = moment().add( 6, 'days' ).toDate();
+    date = moment().add( 8, 'days' ).toDate();
     model.set( 'inviteExpiresAt', date );
-    assert.equal( model.get('isInviteCurrent'), false, 'when "inviteExpiresAt" is beyond acceptable range' );
+    assert.equal( model.get('isInviteCurrent'), false, 'when "inviteExpiresAt" is beyond acceptable range 2' );
   });
 });
 
@@ -140,11 +140,11 @@ test('has a computed property "isInviteExpired"', function(assert) {
     model.set( 'inviteExpiresAt', date );
     assert.equal( model.get('isInviteExpired'), false, 'when "inviteExpiresAt" is today' );
 
-    date = moment().add( 5, 'days' ).toDate();
+    date = moment().add( 7, 'days' ).toDate();
     model.set( 'inviteExpiresAt', date );
     assert.equal( model.get('isInviteExpired'), false, 'when "inviteExpiresAt" is within acceptable range' );
 
-    date = moment().add( 6, 'days' ).toDate();
+    date = moment().add( 8, 'days' ).toDate();
     model.set( 'inviteExpiresAt', date );
     assert.equal( model.get('isInviteExpired'), true, 'when "inviteExpiresAt" is beyond acceptable range' );
   });
