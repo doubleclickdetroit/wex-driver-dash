@@ -1,0 +1,38 @@
+{{#header-page}}
+  {{#block-slot 'title'}}<em>DriverDash</em> Access for Active Drivers{{/block-slot}}
+  {{#block-slot 'subtitle'}}Drivers must have a unique mobile phone number to be invited to DriverDash.{{/block-slot}}
+{{/header-page}}
+
+<div class="page-invites">
+
+  <div class="account-selector">
+    Show drivers for Account:
+    {{#button-dropdown items=model label=(label-account selectedAccount) selectedItem=(mut selectedAccount) as |account|}}
+      <div class="account-name">{{ account.name }}</div>
+      <span class="account-number">#{{ account.accountNumber }}</span>
+      <span class="sep">|</span>
+      <span class="account-level">L{{ account.accountLevel }}</span>
+    {{/button-dropdown}}
+  </div>
+
+  {{#zf-accordion data-multi-expand="true" data-allow-all-closed="true"}}
+    <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
+      <a class="accordion-title">Send Invites <span class="items-count">{{pluralize sortedDrivers.length 'Driver'}}</span></a>
+      <div class="accordion-content" data-tab-content>
+
+        {{partial 'secure/invites/driver-invites'}}
+
+      </div>
+    </li>
+
+    <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
+      <a class="accordion-title">Manage Access</a>
+      <div class="accordion-content" data-tab-content>
+
+          {{partial 'secure/invites/driver-access'}}
+
+      </div>
+    </li>
+  {{/zf-accordion}}
+
+</div>

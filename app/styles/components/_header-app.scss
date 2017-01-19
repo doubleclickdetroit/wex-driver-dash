@@ -1,0 +1,37 @@
+.component-header-app {
+  @include grid-row;
+
+  .top-bar {
+    padding-top:    rem-calc(30);
+    padding-bottom: rem-calc(30);
+    background-color: transparent;
+  }
+
+  .top-bar-title,
+  .content-account {
+    font-size: rem-calc(17);
+  }
+
+  .top-bar-title {
+    margin-right: rem-calc(40);
+  }
+
+  .content-account {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .account-name,
+    .account-number {
+      display: block;
+    }
+    .account-name {
+      text-transform: uppercase;
+      @include open-sans(semibold);
+    }
+  }
+
+  .sep {
+    color: #ccc;
+  }
+}

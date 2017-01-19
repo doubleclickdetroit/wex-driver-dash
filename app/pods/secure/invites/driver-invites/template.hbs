@@ -1,0 +1,48 @@
+{{#liquid-if sortedDrivers.length}}
+
+  {{#checkable-items items=sortedDrivers allValidItems=allValidItems as |checkable|}}
+    <table>
+      <thead>
+        <tr>
+          <th>{{sort-column "lastName" "Last Name" sortBy=(mut sortBy)}}</th>
+          <th>First Name</th>
+          <th>Driver ID</th>
+          <th>Mobile Phone #</th>
+          <th>{{sort-column "inviteExpiresAt" "DriverDash Access" sortBy=(mut sortBy)}}</th>
+          <th class="actions">
+            <input type="checkbox" checked={{ checkable.isAllChecked }} onchange={{action 'handleToggleAll' value='target.checked'}}>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        {{#each sortedDrivers as |driver|}}
+          <tr>
+            <td>{{ driver.lastName }}</td>
+            <td>{{ driver.firstName }}</td>
+            <td>{{ driver.driverId }}</td>
+            <td>{{driver-detail-phone phone=(mut driver.phone) onUpdatePhone=(action 'handleToggleItemCheckbox' driver)}}</td>
+            <td>{{driver-detail-invite driver}}</td>
+            <td>{{input type="checkbox" checked=(mut driver.isChecked) disabled=(not driver.isValidPhone)}}</td>
+          </tr>
+        {{/each}}
+
+      </tbody>
+    </table>
+
+    <footer class="accordion-item-footer">
+      <button class="button" disabled={{ checkable.isAllUnchecked }} {{action 'handleInviteDrivers' checkable.checkedItems}}>
+        Invite
+        {{#liquid-if (gt checkable.checkedItems.length 0) class="drivers-selected"}}
+          <small>({{ checkable.checkedItems.length }})</small>
+        {{/liquid-if}}
+      </button>
+    </footer>
+  {{/checkable-items}}
+
+{{else}}
+
+  <div class="no-content">You currently have no drivers to invite, you need to first add them on WexOnline.</div>
+
+{{/liquid-if}}

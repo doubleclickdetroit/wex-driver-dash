@@ -1,0 +1,129 @@
+.page-invites {
+  @include grid-row;
+
+  table {
+    table-layout: fixed;
+
+    thead .actions {
+      width: 3.5rem;
+    }
+    td {
+      position: relative;
+    }
+    input {
+      margin-bottom: 0;
+    }
+  }
+
+  .account-selector {
+    @include open-sans(semibold);
+    font-size: rem-calc(14);
+    color: #797979;
+
+    .component-button-dropdown {
+      margin-left: rem-calc(15);
+
+      .button-label,
+      .dropdown-item {
+        .account-name {
+          @include open-sans(semibold);
+        }
+      }
+      .button-label {
+        .sep,
+        .account-number {
+          @include open-sans();
+        }
+      }
+    }
+  }
+
+  .accordion-item-footer {
+    $spacing: rem-calc(15);
+
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding: $spacing;
+
+    .drivers-selected {
+      display: inline-block;
+    }
+    .pagination {
+      margin-bottom: 0;
+    }
+    .button {
+      margin: 0;
+      padding-left:  rem-calc(30);
+      padding-right: rem-calc(30);
+      border-radius: rem-calc(4);
+      @include open-sans(semibold);
+    }
+  }
+
+  /**
+   * Temporary styling for elements until in components
+   */
+  .phone {
+    position: relative;
+    margin-top:    -.75rem;
+    margin-bottom: -.75rem;
+  }
+  .uninvited {
+    color: #ccc;
+  }
+  table a {
+    .icon-plus-circled {
+      display: inline-block;
+      margin-right: rem-calc(7);
+      width: rem-calc(16);
+      font-size: rem-calc(16);
+      vertical-align: middle;
+
+      &::before {
+        margin: 0;
+      }
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .driver-invite {
+    margin-top:    -.75rem;
+    margin-bottom: -.75rem;
+
+    .icon-spin3 {
+      font-size: rem-calc(13);
+    }
+  }
+  .invited {
+    position: relative;
+    padding-left: rem-calc(20);
+
+    &::before {
+      position: absolute;
+      top:  calc(50% - 10px);
+      left: 0;
+      color: $success-color;
+      font-family: 'fontello';
+      font-size: rem-calc(16);
+      content: '';
+    }
+
+    .status,
+    .expiration {
+      margin-bottom: 0;
+      line-height: normal;
+    }
+    .status {
+      @include open-sans(semibold);
+      color: #333;
+      font-size: rem-calc(14);
+    }
+    .expiration {
+      @include open-sans(italic);
+      color: #7f7f7f;
+      font-size: rem-calc(13);
+    }
+  }
+}

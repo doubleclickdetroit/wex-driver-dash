@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'tabletgothic_condensed_bold';
+    src: url('../font/TabletGothicCondensed-Bold.eot');
+    src: url('../font/TabletGothicCondensed-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../font/TabletGothicCondensed-Bold.woff') format('woff'),
+         url('../font/TabletGothicCondensed-Bold.ttf') format('truetype'),
+         url('../font/TabletGothicCondensed-Bold.svg#tabletgothic_condensed_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

@@ -1,0 +1,52 @@
+.component-button-dropdown {
+  position: relative;
+  display: inline-block;
+
+  .button-label,
+  .dropdown-pane {
+    font-size: rem-calc(15);
+  }
+
+  .button-label {
+    margin-right: 0;
+    min-width: rem-calc(300);
+    text-align: left;
+    color:        #797979;
+    border-color: #ccc transparent #ccc #ccc;
+    background-color: $white;
+
+    .sep {
+      color: $black;
+    }
+  }
+
+  .dropdown-pane {
+    overflow-y: scroll;
+    max-height: rem-calc(200);
+    top:  43px !important;
+    left: 0 !important;
+    padding: 0;
+    width: 100%;
+    border-top: none;
+
+    .dropdown-item {
+      margin-right: -2px;
+      padding: rem-calc(5) 1rem;
+      cursor: pointer;
+      color: #333;
+
+      &:last-of-type {
+        padding-bottom: rem-calc(10);
+      }
+
+      &.is-active {
+        color: $white;
+        background-color: $secondary-color;
+      }
+
+      .sep {
+        color: #c9c9c9;
+      }
+    }
+  }
+}
