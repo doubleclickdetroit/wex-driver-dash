@@ -21,7 +21,7 @@ export default function() {
   );
 
   this.transition(
-    this.hasClass( 'driver-access' ),
+    this.hasClass( 'driver-invite' ),
     this.toValue( true ),
     this.use( 'toUp' )
   );

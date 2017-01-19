@@ -1,4 +1,4 @@
-{{#if driver.isInviteCurrent class="driver-access"}}
+{{#liquid-if driver.isInviteCurrent class="driver-invite"}}
 
   <div class="invited">
     <p class="status">Invite Sent</p>
@@ -13,4 +13,4 @@
 
   <div class="uninvited">&mdash;</div>
 
-{{/if}}
+{{/liquid-if}}
