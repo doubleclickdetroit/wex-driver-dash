@@ -17,46 +17,7 @@
       <a class="accordion-title">Send Invites <span class="items-count">{{pluralize sortedDrivers.length 'Driver'}}</span></a>
       <div class="accordion-content" data-tab-content>
 
-        {{#liquid-if sortedDrivers.length}}
-
-          <table>
-            <thead>
-              <tr>
-                <th>{{sort-column "lastName" "Last Name" sortBy=(mut sortBy)}}</th>
-                <th>First Name</th>
-                <th>Driver ID</th>
-                <th>Mobile Phone #</th>
-                <th>{{sort-column "inviteExpiresAt" "DriverDash Access" sortBy=(mut sortBy)}}</th>
-                <th class="actions"><input type="checkbox" checked={{isAllChecked}} onchange={{action "handleToggleAll" value="target.checked"}}></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {{#each sortedDrivers as |driver|}}
-                {{#driver-details driver tagName="tr" onUpdatePhone=(action 'handleToggleItemCheckbox' driver) as |detail|}}
-                  <td>{{ detail.lastName }}</td>
-                  <td>{{ detail.firstName }}</td>
-                  <td>{{ detail.driverId }}</td>
-                  <td>{{ detail.phone }}</td>
-                  <td>{{ detail.invite }}</td>
-                  <td>{{input type="checkbox" checked=driver.isChecked disabled=(not driver.isValidPhone)}}</td>
-                {{/driver-details}}
-              {{/each}}
-            </tbody>
-          </table>
-
-          <footer class="accordion-item-footer">
-            <button class="button" disabled={{isInvitingDisabled}} {{action 'handleInviteDrivers'}}>
-              Invite
-              {{#liquid-if (gt checkedItems.length 0) class="drivers-selected"}}<small>({{checkedItems.length}})</small>{{/liquid-if}}
-            </button>
-          </footer>
-
-        {{else}}
-
-          <div class="no-content">You currently have no driver to invite, you need to first add them on WexOnline.</div>
-
-        {{/liquid-if}}
+        {{partial 'secure/invites/driver-invites'}}
 
       </div>
     </li>
@@ -64,7 +25,9 @@
     <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
       <a class="accordion-title">Manage Access</a>
       <div class="accordion-content" data-tab-content>
-        <div class="no-content">You currently have no drivers to manage, you can invite drivers from the list above.</div>
+
+          {{partial 'secure/invites/driver-access'}}
+
       </div>
     </li>
   {{/zf-accordion}}

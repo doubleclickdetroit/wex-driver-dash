@@ -1,10 +1,8 @@
 import Ember from 'ember';
-import { alias, sort, equal, observes } from 'ember-computed-decorators';
+import { sort, observes } from 'ember-computed-decorators';
 import computed from 'ember-computed-decorators';
 
 export default Ember.Controller.extend({
-  @alias( 'sortedItems' ) sortedDrivers: null,
-
   @observes( 'model' )
   initSelectedAccount() {
     this.set( 'selectedAccount', this.get('model.firstObject') );
@@ -14,33 +12,21 @@ export default Ember.Controller.extend({
   sortBy: 'lastName',
 
   @sort( 'selectedAccount.drivers', 'sortDefinition' )
-  sortedItems: null,
+  sortedDrivers: null,
 
   @computed( 'sortBy' )
   sortDefinition(sortBy) { return [ sortBy ]; },
 
   // Checkbox Properties
-  @computed( 'sortedItems.@each.isValidPhone' )
-  allValidItems( sortedItems ) {
-    return sortedItems.filter( item => item.get('isValidPhone') );
+  @computed( 'sortedDrivers.@each.isValidPhone' )
+  allValidItems( sortedDrivers ) {
+    const validItems = sortedDrivers.filter( item => item.get('isValidPhone') );
+    return Ember.A( validItems );
   },
-
-  @computed( 'sortedItems.@each.isChecked' )
-  checkedItems( sortedItems ) {
-    return sortedItems.filterBy( 'isChecked', true );
-  },
-
-  @computed( 'allValidItems', 'checkedItems.@each.isChecked' )
-  isAllChecked( allValidItems, checkedItems ) {
-    return allValidItems.length === checkedItems.length;
-  },
-
-  @equal( 'checkedItems.length', 0 )
-  isInvitingDisabled: null,
 
   actions: {
     handleToggleAll(isChecked) {
-      Ember.A( this.get('allValidItems') ).setEach( 'isChecked', isChecked );
+      this.get( 'allValidItems' ).setEach( 'isChecked', isChecked );
     },
 
     handleToggleItemCheckbox(driver) {
@@ -48,12 +34,8 @@ export default Ember.Controller.extend({
       driver.set( 'isChecked', isValidPhone );
     },
 
-    handleUpdateSelectedAccount(account) {
-      this.set( 'selectedAccount', account );
-    },
-
-    handleInviteDrivers() {
-      this.get( 'checkedItems' ).forEach(driver => {
+    handleInviteDrivers(checkedItems) {
+      checkedItems.forEach(driver => {
         driver.save().then( () => driver.set('isChecked', false) );
       });
     }
