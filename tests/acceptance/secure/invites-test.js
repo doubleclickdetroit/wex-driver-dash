@@ -1,14 +1,28 @@
 /* global server */
 
+import Ember from 'ember';
 import { test } from 'qunit';
 import wait from 'ember-test-helpers/wait';
+import startApp from 'driver-dash/tests/helpers/start-app';
+import destroyApp from 'driver-dash/tests/helpers/destroy-app';
 import moduleForAcceptance from 'driver-dash/tests/helpers/module-for-acceptance';
+import { authenticateSession } from 'driver-dash/tests/helpers/ember-simple-auth';
 
-var account;
+const { tryInvoke } = Ember;
+
+let application;
+let account;
 
 moduleForAcceptance('Acceptance | secure/invites', {
   beforeEach() {
+    application = startApp();
+    authenticateSession( application );
     account = server.create( 'account' );
+  },
+
+  afterEach() {
+    tryInvoke( server, 'shutdown' );
+    destroyApp( application );
   }
 });
 
