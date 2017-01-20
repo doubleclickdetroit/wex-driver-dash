@@ -14,14 +14,15 @@
         <h1><img class="logo" src="assets/images/logo-icon.png">DriverDash Access</h1>
         <p>Please use your WEX Online credentials to log into this portal.</p>
 
-        <form>
-          <label>Username</label>
-          <input>
+        <form {{action 'authenticate' on='submit'}}>
+          <label for="identification">Username</label>
+          {{input id='identification' value=identification}}
 
-          <label>Password</label>
-          <input>
+          <label for="password">Password</label>
+          {{input id='password' type='password' value=password}}
 
-          {{link-to "Login" "secure.invites" class="button"}}
+          <button type="submit" class="button">Login</button>
+          {{#if errorMessage}}<p>{{errorMessage}}</p>{{/if}}
         </form>
       </div>
     </div>
