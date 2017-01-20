@@ -1,4 +1,5 @@
 import moment from 'moment';
+import Mirage from 'ember-cli-mirage';
 
 export default function() {
 
@@ -37,5 +38,42 @@ export default function() {
     let numDays = Math.floor( (Math.random() * 4) + 1 );
     let attrs = { inviteExpiresAt: moment().add( numDays, 'days' ).toDate() };
     return drivers.find( id ).update( attrs );
+  });
+
+
+  /**
+   * Authentication
+   */
+  function formEncodedToJson(encoded) {
+    let result = {};
+    encoded.split( '&' ).forEach(function(part) {
+      var item = part.split( '=' );
+      result[ item[0] ] = decodeURIComponent( item[1] );
+    });
+
+    return result;
+  }
+
+  this.post('/uaa/oauth/token', function(db, request) {
+    let params = formEncodedToJson( request.requestBody );
+    if ( params.username === "user@example.com" && params.password === "secret" ) {
+      return {
+        token_type:   'bearer',
+        access_token: 'abc123xyz789'
+      };
+    }
+    else {
+      let body = { errors: 'Email or password is invalid' };
+      return new Mirage.Response( 401, {}, body );
+    }
+  });
+
+  this.get('/users/current', function(db, request) {
+    if ( request.requestHeaders.Authorization === "Bearer abc123xyz789" ) {
+      return { user: { id: 1, firstName: 'Ben', lastName: 'Babics' } };
+    }
+    else {
+      return new Mirage.Response( 401, {}, {} );
+    }
   });
 }
