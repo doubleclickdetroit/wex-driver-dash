@@ -9,7 +9,7 @@ Router.map(function() {
   this.route( 'login' );
 
   this.route('secure', { path: '' }, function() {
-    this.route( 'invites' );
+    this.route( 'invites', { path: '' } );
   });
 });
 
