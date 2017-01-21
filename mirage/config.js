@@ -56,7 +56,7 @@ export default function() {
 
   this.post('/uaa/oauth/token', function(db, request) {
     let params = formEncodedToJson( request.requestBody );
-    if ( params.username === "user@example.com" && params.password === "secret" ) {
+    if ( params.username === "user" && params.password === "password" ) {
       return {
         token_type:   'bearer',
         access_token: 'abc123xyz789'
