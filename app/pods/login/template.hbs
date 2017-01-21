@@ -14,7 +14,7 @@
         <h1><img class="logo" src="assets/images/logo-icon.png">DriverDash Access</h1>
         <p>Please use your WEX Online credentials to log into this portal.</p>
 
-        <form {{action 'authenticate' on='submit'}}>
+        <form {{action 'handleAuthentication' on='submit'}}>
           {{#liquid-if errorMessage}}
             <div class="alert callout">
               <p><i class="icon-attention"></i> {{ errorMessage }}</p>
