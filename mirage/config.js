@@ -63,7 +63,7 @@ export default function() {
       };
     }
     else {
-      let body = { errors: 'Email or password is invalid' };
+      let body = { error: 'Email or password is invalid' };
       return new Mirage.Response( 401, {}, body );
     }
   });

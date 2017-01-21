@@ -15,14 +15,19 @@
         <p>Please use your WEX Online credentials to log into this portal.</p>
 
         <form {{action 'authenticate' on='submit'}}>
+          {{#liquid-if errorMessage}}
+            <div class="alert callout">
+              <p><i class="icon-attention"></i> {{ errorMessage }}</p>
+            </div>
+          {{/liquid-if}}
+
           <label for="identification">Username</label>
           {{input id='identification' value=identification}}
 
           <label for="password">Password</label>
           {{input id='password' type='password' value=password}}
 
-          <button type="submit" class="button">Login</button>
-          {{#if errorMessage}}<p>{{errorMessage}}</p>{{/if}}
+          <button type="submit" class="button" disabled={{not hasCredentials}}>Login</button>
         </form>
       </div>
     </div>
