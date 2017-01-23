@@ -1,5 +1,6 @@
 import moment from 'moment';
 import Mirage from 'ember-cli-mirage';
+import ENV from 'driver-dash/config/environment';
 
 export default function() {
 
@@ -26,6 +27,7 @@ export default function() {
 
     http://www.ember-cli-mirage.com/docs/v0.2.x/shorthands/
   */
+
   this.get( '/accounts' );
 
   this.get('/accounts/:id/drivers', function({ accounts }, request) {
@@ -76,4 +78,9 @@ export default function() {
       return new Mirage.Response( 401, {}, {} );
     }
   });
+
+
+  if ( ENV.CONFIG ) {
+    this.passthrough( `${ENV.CONFIG.API.AUTH}/**` );
+  }
 }
