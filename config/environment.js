@@ -34,7 +34,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV.CONFIG = CONFIG.DIT;
+    var api = process.env.api;
+    if ( api ) { api = api.toUpperCase() }
+
+    ENV.CONFIG = CONFIG[ api ] || CONFIG.DIT;
   }
 
   if (environment === 'test') {
