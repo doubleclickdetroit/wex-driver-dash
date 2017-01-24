@@ -2,7 +2,9 @@ exports.config = {
 
   "ALL": {
     "AUTH": {
-      "LOGIN_STATE": "user.auth.login"
+      "CLIENT_ID":     "driverDashManagement",
+      "CLIENT_SECRET": "H=hcAFk@txfNaQ2Lp46sPDK&&sY^ggrK7w5n*xV!",
+      "SCOPE":         [ 'accounts', 'user:account_management', 'drivers' ]
     },
     "ENDPOINTS": {
       "AUTH": "/uaa/oauth/token"
