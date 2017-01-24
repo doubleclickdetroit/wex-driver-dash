@@ -26,7 +26,7 @@ module.exports = function(environment) {
   };
 
   ENV.APP_CONFIG = CONFIG.ALL;
-  ENV.MOCKS      = CONFIG.MOCK;
+  ENV.MOCK       = CONFIG.MOCK;
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
