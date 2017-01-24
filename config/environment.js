@@ -56,7 +56,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    //
+    ENV.CONFIG = CONFIG.PROD;
   }
 
   ENV[ 'ember-simple-auth' ] = {
