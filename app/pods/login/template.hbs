@@ -25,9 +25,12 @@
           {{input id='identification' value=identification}}
 
           <label for="password">Password</label>
-          {{input id='password' type='password' value=password}}
+          {{input id='password' type='password' value=password autocomplete="new-password"}}
 
-          <button id="btn-login" type="submit" class="button" disabled={{not hasCredentials}}>Login</button>
+          <button id="btn-login" type="submit" class="button" disabled={{not isEnabled}}>
+            {{#liquid-if isPending class="login-is-pending"}}<i class="icon-spin3 animate-spin"></i>{{/liquid-if}}
+            Login
+          </button>
         </form>
       </div>
     </div>
