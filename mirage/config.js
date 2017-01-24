@@ -65,7 +65,7 @@ export default function() {
       };
     }
     else {
-      let body = { message: 'Email or password is invalid' };
+      let body = { error: 'unauthorized' };
       return new Mirage.Response( 401, {}, body );
     }
   });
