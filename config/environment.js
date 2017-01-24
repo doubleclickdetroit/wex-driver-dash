@@ -1,8 +1,10 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
+  const CONFIG = require( './project' ).config;
+
   var ENV = {
-    modulePrefix: 'driver-dash',
+    modulePrefix:    'driver-dash',
     podModulePrefix: 'driver-dash/pods',
     environment: environment,
     baseURL: '/',
@@ -23,12 +25,20 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.APP_CONFIG = CONFIG.ALL;
+  ENV.MOCKS      = CONFIG.MOCK;
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    var api = process.env.api;
+    if ( api ) { api = api.toUpperCase() }
+
+    ENV.CONFIG = CONFIG[ api ] || CONFIG.DIT;
   }
 
   if (environment === 'test') {
@@ -41,11 +51,19 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV.CONFIG = CONFIG.MOCK;
   }
 
   if (environment === 'production') {
-
+    ENV.CONFIG = CONFIG.PROD;
   }
+
+  ENV[ 'ember-simple-auth' ] = {
+    authenticationRoute:         'login',
+    routeAfterAuthentication:    'secure',
+    routeIfAlreadyAuthenticated: 'secure'
+  };
 
   return ENV;
 };

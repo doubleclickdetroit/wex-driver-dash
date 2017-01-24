@@ -14,14 +14,23 @@
         <h1><img class="logo" src="assets/images/logo-icon.png">DriverDash Access</h1>
         <p>Please use your WEX Online credentials to log into this portal.</p>
 
-        <form>
-          <label>Username</label>
-          <input>
+        <form {{action 'handleAuthentication' on='submit'}}>
+          {{#liquid-if errorMessage}}
+            <div class="alert callout">
+              <p><i class="icon-attention"></i> {{errors-login errorMessage}}</p>
+            </div>
+          {{/liquid-if}}
 
-          <label>Password</label>
-          <input>
+          <label for="identification">Username</label>
+          {{input id='identification' value=identification}}
 
-          {{link-to "Login" "secure.invites" class="button"}}
+          <label for="password">Password</label>
+          {{input id='password' type='password' value=password autocomplete="new-password"}}
+
+          <button id="btn-login" type="submit" class="button" disabled={{not isEnabled}}>
+            {{#liquid-if isPending class="login-is-pending"}}<i class="icon-spin3 animate-spin"></i>{{/liquid-if}}
+            Login
+          </button>
         </form>
       </div>
     </div>

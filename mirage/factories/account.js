@@ -9,7 +9,7 @@ export default Factory.extend({
 
   afterCreate(account) {
     account.update({
-      links: { drivers: `/api/accounts/${account.id}/drivers` }
+      links: { drivers: `/accounts/${account.id}/drivers` }
     });
   }
 });

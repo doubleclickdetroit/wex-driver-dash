@@ -8,9 +8,9 @@
     </div>
 
     <div class="top-bar-right">
-      Welcome, John Smith
+      Welcome, {{ session.currentUser.firstName }} {{ session.currentUser.lastName }}
       <span class="sep">|</span>
-      {{link-to 'Log Out' 'login'}}
+      <a class="link-logout" {{action 'invalidateSession'}}>Log Out</a>
     </div>
   </div>
 </div>

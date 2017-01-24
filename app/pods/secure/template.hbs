@@ -1,2 +1,4 @@
-{{header-app}}
-{{liquid-outlet}}
+{{#if session.isAuthenticated}}
+  {{header-app}}
+  {{liquid-outlet}}
+{{/if}}

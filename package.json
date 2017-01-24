@@ -49,6 +49,7 @@
     "ember-moment": "7.3.0",
     "ember-prop-types": "2.5.11",
     "ember-resolver": "^2.0.3",
+    "ember-simple-auth": "1.2.0-beta.1",
     "ember-truth-helpers": "1.2.0",
     "liquid-fire": "0.27.0",
     "loader.js": "^4.0.1"
