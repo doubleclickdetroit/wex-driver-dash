@@ -17,7 +17,7 @@
         <form {{action 'handleAuthentication' on='submit'}}>
           {{#liquid-if errorMessage}}
             <div class="alert callout">
-              <p><i class="icon-attention"></i> {{ errorMessage }}</p>
+              <p><i class="icon-attention"></i> {{errors-login errorMessage}}</p>
             </div>
           {{/liquid-if}}
 
