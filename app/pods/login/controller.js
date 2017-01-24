@@ -32,8 +32,12 @@ export default Ember.Controller.extend({
     handleAuthentication() {
       let { session, identification, password } = this.getProperties( 'session', 'identification', 'password' );
       session.authenticate( 'authenticator:oauth2', identification, password )
-        .catch(reason => { this.set( 'errorMessage' , reason.error ); })
-        .finally(() => this.set( 'isPending', false ));
+        .catch(reason => {
+          this.setProperties({
+            isPending:    false,
+            errorMessage: reason.error
+          });
+        });
 
       this.set( 'isPending', true );
     }
