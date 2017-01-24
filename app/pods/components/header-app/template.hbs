@@ -10,7 +10,7 @@
     <div class="top-bar-right">
       Welcome, {{ session.currentUser.firstName }} {{ session.currentUser.lastName }}
       <span class="sep">|</span>
-      <a {{action 'invalidateSession'}}>Log Out</a>
+      <a class="link-logout" {{action 'invalidateSession'}}>Log Out</a>
     </div>
   </div>
 </div>
