@@ -1,6 +1,13 @@
 export default function() {
 
   this.transition(
+    this.hasClass( 'login-is-pending' ),
+    this.toValue( true ),
+    this.use( 'toLeft' ),
+    this.reverse( 'toRight' )
+  );
+
+  this.transition(
     this.hasClass( 'phone' ),
     this.toValue( true ),
     this.use( 'toUp' ),
