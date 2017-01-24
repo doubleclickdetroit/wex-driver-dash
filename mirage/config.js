@@ -81,6 +81,7 @@ export default function() {
 
 
   if ( ENV.CONFIG ) {
+    this.passthrough( `${ENV.CONFIG.API.AM}/**` );
     this.passthrough( `${ENV.CONFIG.API.AUTH}/**` );
   }
 }
