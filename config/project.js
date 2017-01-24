@@ -13,6 +13,7 @@ exports.config = {
 
   "TEST": {
     "API": {
+      "AM":   "http://localhost:4200",
       "AUTH": "http://localhost:4200"
     }
   },
