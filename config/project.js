@@ -11,7 +11,7 @@ exports.config = {
     }
   },
 
-  "TEST": {
+  "MOCK": {
     "API": {
       "AM":   "http://localhost:4200",
       "AUTH": "http://localhost:4200"

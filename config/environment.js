@@ -26,6 +26,7 @@ module.exports = function(environment) {
   };
 
   ENV.APP_CONFIG = CONFIG.ALL;
+  ENV.MOCKS      = CONFIG.MOCK;
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -51,7 +52,7 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
 
-    ENV.CONFIG = CONFIG.TEST;
+    ENV.CONFIG = CONFIG.MOCK;
   }
 
   if (environment === 'production') {
