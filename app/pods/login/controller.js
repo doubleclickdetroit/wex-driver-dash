@@ -35,7 +35,7 @@ export default Ember.Controller.extend({
         .catch(reason => {
           this.setProperties({
             isPending:    false,
-            errorMessage: ( reason && reason.error ) || ''
+            errorMessage: ( reason && reason.error ) || 'services-down'
           });
         });
 
