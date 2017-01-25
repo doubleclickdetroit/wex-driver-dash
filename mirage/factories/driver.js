@@ -5,7 +5,7 @@ export default Factory.extend({
   lastName:  faker.name.lastName,
 
   driverId() {
-    return faker.random.number( 1000000, { min: 6 } );
+    return faker.random.number( 1000000 );
   },
 
   phone() {
