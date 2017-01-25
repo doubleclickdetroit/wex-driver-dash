@@ -3,12 +3,12 @@
 
   <div class="content-account">
     <div class="top-bar-left">
-      <span class="account-name">State of Maine</span>
-      <span class="account-number">#123456789134</span>
+      <span class="account-name">{{ company.name }}</span>
+      <span class="account-number">#{{ company.accountNumber }}</span>
     </div>
 
     <div class="top-bar-right">
-      Welcome, {{ session.currentUser.firstName }} {{ session.currentUser.lastName }}
+      Welcome, {{ currentUser.firstName }} {{ currentUser.lastName }}
       <span class="sep">|</span>
       <a class="link-logout" {{action 'invalidateSession'}}>Log Out</a>
     </div>
