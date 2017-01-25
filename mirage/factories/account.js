@@ -5,11 +5,5 @@ export default Factory.extend({
 
   accountNumber() {
     return faker.random.number( 10000000000000, { min: 13 } );
-  },
-
-  afterCreate(account) {
-    account.update({
-      links: { drivers: `/accounts/${account.id}/drivers` }
-    });
   }
 });
