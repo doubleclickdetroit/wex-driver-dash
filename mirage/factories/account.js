@@ -8,5 +8,12 @@ export default Factory.extend({
   },
   wexAccountNumber() {
     return this.accountNumber;
+  },
+
+  afterCreate(account) {
+    // set primaryKey to `accountId`
+    // unsure how else to add `accountId`?
+    // when embeded, doesn't seem to be serialized ಠ_ಠ
+    account.update({ accountId: account.id });
   }
 });
