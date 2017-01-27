@@ -3,14 +3,16 @@ import moment from 'moment';
 import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('driver', 'Unit | Model | driver', {
-  // Specify the other units that are required for this test.
   needs: [ 'model:account' ]
 });
 
-test('it exists', function(assert) {
-  let model = this.subject();
-  // let store = this.store();
-  assert.ok( !!model );
+test('should belong to an account', function(assert) {
+  assert.expect(2);
+  const Driver       = this.store().modelFor( 'driver' );
+  const relationship = Ember.get( Driver, 'relationshipsByName' ).get( 'account' );
+
+  assert.equal( relationship.key,  'account',   'has relationship with `account`' );
+  assert.equal( relationship.kind, 'belongsTo', 'kind of relationship is `belongsTo`' );
 });
 
 test('has a computed property "fullName"', function(assert) {
