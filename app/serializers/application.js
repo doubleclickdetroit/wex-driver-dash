@@ -21,7 +21,7 @@ export default DS.RESTSerializer.extend({
   // Add custom json root. The API returns an array of objects without a json root node.
   // We need to re-assign it to the plural version of the model name.
   // So [ {post1}, {post2} ] becomes { posts: [ {post1}, {post2} ] }
-    normalizeArrayResponse(store, primaryModelClass, rawPayload, id, requestType) {
+  normalizeArrayResponse(store, primaryModelClass, rawPayload, id, requestType) {
     const pluralTypeKey = Ember.Inflector.inflector.pluralize( primaryModelClass.modelName );
     let payload;
 
