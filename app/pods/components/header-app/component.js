@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { alias } from 'ember-computed-decorators';
+import { alias, observes, on } from 'ember-computed-decorators';
 
 export default Ember.Component.extend({
   tagName:    'header',
@@ -12,6 +12,16 @@ export default Ember.Component.extend({
 
   @alias( 'currentUser.company' )
   company: null,
+
+  // Temporary: hard-coded until brand endpoints in place
+  @on( 'init' )
+  @observes( 'currentUser' )
+  addFauxBranding() {
+    if ( this.get('currentUser') ) {
+      const brand = Ember.Object.create({ url: 'assets/images/wex-logo.png' });
+      this.set( 'currentUser.brand', brand );
+    }
+  },
 
   actions: {
     invalidateSession() {
