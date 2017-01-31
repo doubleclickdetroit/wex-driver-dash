@@ -70,9 +70,13 @@ export default function() {
     }
   });
 
-  this.get('/users/current', function(db, request) {
+
+  /**
+   * Users
+   */
+  this.get('/users/current', function({ users, accounts }, request) {
     if ( request.requestHeaders.Authorization === "Bearer abc123xyz789" ) {
-      return { user: { id: 1, firstName: 'Ben', lastName: 'Babics' } };
+      return users.first();
     }
     else {
       return new Mirage.Response( 401, {}, {} );
@@ -81,6 +85,7 @@ export default function() {
 
 
   if ( ENV.CONFIG ) {
+    this.passthrough( `${ENV.CONFIG.API.AM}/**` );
     this.passthrough( `${ENV.CONFIG.API.AUTH}/**` );
   }
 }
