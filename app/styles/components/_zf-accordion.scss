@@ -55,7 +55,8 @@
         margin-bottom: 0;
       }
 
-      .no-content {
+      .content-loading,
+      .content-empty {
         display: flex;
         align-items:     center;
         justify-content: center;
