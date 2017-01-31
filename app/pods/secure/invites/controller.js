@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { sort, observes } from 'ember-computed-decorators';
+import { sort, filterBy, observes } from 'ember-computed-decorators';
 import computed from 'ember-computed-decorators';
 
 export default Ember.Controller.extend({
@@ -8,21 +8,40 @@ export default Ember.Controller.extend({
     this.set( 'selectedAccount', this.get('model.firstObject') );
   },
 
-  // Sorting Properties
-  sortBy: 'lastName',
 
-  @sort( 'selectedAccount.drivers', 'sortDefinition' )
-  sortedDrivers: null,
+  // Unconfirmed Sorting Properties
+  sortByUnconfirmed: 'lastName',
 
-  @computed( 'sortBy' )
-  sortDefinition(sortBy) { return [ sortBy ]; },
+  @computed( 'sortByUnconfirmed' )
+  sortDefinitionUnconfirmed(sortByUnconfirmed) { return [ sortByUnconfirmed ]; },
+
+  @filterBy( 'selectedAccount.drivers', 'isConfirmed', false )
+  driversUnconfirmed: null,
+
+  @sort( 'driversUnconfirmed', 'sortDefinitionUnconfirmed' )
+  sortedDriversUnconfirmed: null,
+
+
+  // Confirmed Sorting Properties
+  sortByConfirmed: 'lastName',
+
+  @computed( 'sortByConfirmed' )
+  sortDefinitionConfirmed(sortByConfirmed) { return [ sortByConfirmed ]; },
+
+  @filterBy( 'selectedAccount.drivers', 'isConfirmed', true )
+  driversConfirmed: null,
+
+  @sort( 'driversConfirmed', 'sortDefinitionConfirmed' )
+  sortedDriversConfirmed: null,
+
 
   // Checkbox Properties
-  @computed( 'sortedDrivers.@each.isValidPhone' )
-  allValidItems( sortedDrivers ) {
-    const validItems = sortedDrivers.filter( item => item.get('isValidPhone') );
+  @computed( 'sortedDriversUnconfirmed.@each.isValidPhone' )
+  allValidItems( sortedDriversUnconfirmed ) {
+    const validItems = sortedDriversUnconfirmed.filter( item => item.get('isValidPhone') );
     return Ember.A( validItems );
   },
+
 
   actions: {
     handleToggleAll(isChecked) {

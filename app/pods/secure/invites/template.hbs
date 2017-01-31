@@ -17,7 +17,7 @@
 
   {{#zf-accordion data-multi-expand="true" data-allow-all-closed="true"}}
     <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
-      <a class="accordion-title">Send Invites <span class="items-count">{{pluralize sortedDrivers.length 'Driver'}}</span></a>
+      <a class="accordion-title">Send Invites <span class="items-count">{{pluralize sortedDriversUnconfirmed.length 'Driver'}}</span></a>
       <div class="accordion-content" data-tab-content>
 
         {{partial 'secure/invites/driver-invites'}}
@@ -26,10 +26,10 @@
     </li>
 
     <li class="accordion-item is-active" data-accordion-item data-disable-collapse="true">
-      <a class="accordion-title">Manage Access</a>
+      <a class="accordion-title">Manage Access <span class="items-count">{{pluralize sortedDriversConfirmed.length 'Driver'}}</span></a>
       <div class="accordion-content" data-tab-content>
 
-          {{partial 'secure/invites/driver-access'}}
+        {{partial 'secure/invites/driver-access'}}
 
       </div>
     </li>
