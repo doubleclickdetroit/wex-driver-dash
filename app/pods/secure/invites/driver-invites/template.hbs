@@ -1,14 +1,14 @@
-{{#liquid-if sortedDrivers.length}}
+{{#liquid-if sortedDriversUnconfirmed.length}}
 
-  {{#checkable-items items=sortedDrivers allValidItems=allValidItems as |checkable|}}
+  {{#checkable-items items=sortedDriversUnconfirmed allValidItems=allValidItems as |checkable|}}
     <table>
       <thead>
         <tr>
-          <th>{{sort-column "lastName" "Last Name" sortBy=(mut sortBy)}}</th>
+          <th>{{sort-column "lastName" "Last Name" sortBy=(mut sortByUnconfirmed)}}</th>
           <th>First Name</th>
           <th>Driver ID</th>
           <th>Mobile Phone #</th>
-          <th>{{sort-column "inviteExpiresAt" "DriverDash Access" sortBy=(mut sortBy)}}</th>
+          <th>{{sort-column "inviteExpiresAt" "DriverDash Access" sortBy=(mut sortByUnconfirmed)}}</th>
           <th class="actions">
             <input type="checkbox" checked={{ checkable.isAllChecked }} onchange={{action 'handleToggleAll' value='target.checked'}}>
           </th>
@@ -17,7 +17,7 @@
 
       <tbody>
 
-        {{#each sortedDrivers as |driver|}}
+        {{#each sortedDriversUnconfirmed as |driver|}}
           <tr>
             <td>{{ driver.lastName }}</td>
             <td>{{ driver.firstName }}</td>

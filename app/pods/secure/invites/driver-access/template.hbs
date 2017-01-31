@@ -1,1 +1,34 @@
-<div class="no-content">You currently have no drivers to manage, you can invite drivers from the list above.</div>
+{{#liquid-if sortedDriversConfirmed.length}}
+
+  <table>
+    <thead>
+      <tr>
+        <th>{{sort-column "lastName" "Last Name" sortBy=(mut sortByConfirmed)}}</th>
+        <th>First Name</th>
+        <th>Driver ID</th>
+        <th>Mobile Phone #</th>
+        <th>{{sort-column "isDriverDashEnabled" "DriverDash Access" sortBy=(mut sortByConfirmed)}}</th>
+        <th class="actions">&nbsp;</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {{#each sortedDriversConfirmed as |driver|}}
+        <tr>
+          <td>{{ driver.lastName }}</td>
+          <td>{{ driver.firstName }}</td>
+          <td>{{ driver.driverId }}</td>
+          <td>{{driver-detail-phone phone=(mut driver.phone) onUpdatePhone=(action 'handleToggleItemCheckbox' driver)}}</td>
+          <td colspan="2">{{driver-detail-access driver}}</td>
+        </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+
+{{else}}
+
+  <div class="no-content">You currently have no drivers to manage, you can invite drivers from the list above.</div>
+
+{{/liquid-if}}
