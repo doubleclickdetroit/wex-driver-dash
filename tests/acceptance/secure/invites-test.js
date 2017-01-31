@@ -3,42 +3,40 @@
 import Ember from 'ember';
 import { test } from 'qunit';
 import wait from 'ember-test-helpers/wait';
-import startApp from 'driver-dash/tests/helpers/start-app';
 import destroyApp from 'driver-dash/tests/helpers/destroy-app';
 import moduleForAcceptance from 'driver-dash/tests/helpers/module-for-acceptance';
 import { authenticateSession } from 'driver-dash/tests/helpers/ember-simple-auth';
 
 const { tryInvoke } = Ember;
 
-let application;
 let account;
 
 moduleForAcceptance('Acceptance | secure/invites', {
   beforeEach() {
-    application = startApp();
-    authenticateSession( application );
     account = server.create( 'account' );
+    authenticateSession( this.application );
+    server.get( '/users/current', { user: { id: 1, firstName: 'John' } }, 200 );
   },
 
   afterEach() {
     tryInvoke( server, 'shutdown' );
-    destroyApp( application );
+    destroyApp( this.application );
   }
 });
 
 test('visiting /invites', function(assert) {
   server.createList( 'driver', 3, { accountId: account.id } );
-  visit( '/invites' );
+  visit( '/' );
 
   andThen(() => {
-    assert.equal(currentURL(), '/invites');
+    assert.equal(currentURL(), '/');
     assert.equal(find('.accordion-item:first .accordion-content tbody tr').length, 3, '3 rows should be rendered');
   });
 });
 
 test('0 drivers should result in appropriate messaging', function(assert) {
   server.createList( 'driver', 0 );
-  visit( '/invites' );
+  visit( '/' );
 
   andThen(() => {
     assert.ok( find('.no-content').is(':visible'), 'no drivers to select messaging is displayed' );
@@ -47,7 +45,7 @@ test('0 drivers should result in appropriate messaging', function(assert) {
 
 test('send invites button should be disabled', function(assert) {
   server.createList( 'driver', 1, { accountId: account.id } );
-  visit( '/invites' );
+  visit( '/' );
 
   andThen(() => {
     assert.ok( find('.accordion-item-footer .button').is(':disabled'), 'invite drivers button is disabled' );
@@ -56,7 +54,7 @@ test('send invites button should be disabled', function(assert) {
 
 test('modify driver phone and invite driver', function(assert) {
   server.createList( 'driver', 1, { accountId: account.id } );
-  visit( '/invites' );
+  visit( '/' );
 
   click( '.phone-text' );
   fillIn( '.phone-input', '800-555-1212' );
@@ -83,7 +81,7 @@ test('sort drivers by last name', function(assert) {
   server.create( 'driver', { lastName: 'Thompson', accountId: account.id } );
   server.create( 'driver', { lastName: 'Babics', accountId: account.id } );
 
-  visit( '/invites' );
+  visit( '/' );
 
   andThen(() => {
     assert.equal( find('.accordion-item:first tbody tr:eq(0) td:eq(0)').text().trim(), 'Babics' );
