@@ -39,9 +39,10 @@ export default function(server) {
     // manage drivers
     n = getRandomNumber(3);
     server.createList('driver', n, {
-      accountId:         account.id,
-      inviteExpiresAt:   new Date(),
-      confirmAcceptedAt: new Date()
+      accountId:           account.id,
+      inviteExpiresAt:     new Date(),
+      confirmAcceptedAt:   new Date(),
+      isDriverDashEnabled: Math.random() >= 0.5
     });
   });
 
