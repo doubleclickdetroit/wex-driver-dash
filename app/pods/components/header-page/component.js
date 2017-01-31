@@ -7,8 +7,6 @@ export default Ember.Component.extend(SlotsMixin, {
 
   // hardcode "partners" data; for now
   partners: Ember.A([
-    { name: 'Foo' },
-    { name: 'Bar' },
-    { name: 'Baz' }
+    { url: 'assets/images/logo-phillips.png' }
   ])
 });

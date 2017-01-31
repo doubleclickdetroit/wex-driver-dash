@@ -7,9 +7,6 @@ moduleForComponent('header-page', 'Integration | Component | header page', {
 
 test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
   this.render(hbs`{{header-page}}`);
 
   assert.equal(this.$( '.content-title h2' ).text().trim(), 'Page Title');
@@ -25,4 +22,7 @@ test('it renders', function(assert) {
 
   assert.equal(this.$( '.content-title h2' ).text().trim(), 'My Title');
   assert.equal(this.$( '.content-title p' ).text().trim(), 'My Subitle');
+
+  assert.equal( this.$( '.content-partners .partner-logo').length, 1, 'has one partner' );
+  assert.equal( this.$( '.content-partners img').attr('src'), 'assets/images/logo-phillips.png', 'renders partner logo' );
 });
