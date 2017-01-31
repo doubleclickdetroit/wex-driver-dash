@@ -43,6 +43,10 @@
 
 {{else}}
 
-  <div class="no-content">You currently have no drivers to invite, you need to first add them on WexOnline.</div>
+  {{#liquid-if selectedAccount.drivers.isPending}}
+    <div class="content-loading"><i class="icon-spin3 animate-spin"></i></div>
+  {{else}}
+    <div class="content-empty">You currently have no drivers to invite, you need to first add them on WexOnline.</div>
+  {{/liquid-if}}
 
 {{/liquid-if}}
