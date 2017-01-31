@@ -32,8 +32,18 @@ export default function(server) {
 
   // create drivers (with associations)
   accounts.forEach(account => {
+    // invite drivers
     let n = getRandomNumber() + 1;
     server.createList( 'driver', n, { accountId: account.id } );
+
+    // manage drivers
+    n = getRandomNumber(3);
+    server.createList('driver', n, {
+      accountId:           account.id,
+      inviteExpiresAt:     new Date(),
+      confirmAcceptedAt:   new Date(),
+      isDriverDashEnabled: Math.random() >= 0.5
+    });
   });
 
 }

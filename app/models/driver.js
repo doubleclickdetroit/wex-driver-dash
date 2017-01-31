@@ -8,12 +8,13 @@ import { validatePhone } from '../helpers/validate-phone';
 export default DS.Model.extend({
   account: belongsTo( 'account' ),
 
-  firstName: DS.attr(),
-  lastName:  DS.attr(),
-  phone:     DS.attr(),
-  driverId:  DS.attr( 'number' ),
-  inviteExpiresAt:   DS.attr( 'date' ),
-  confirmAcceptedAt: DS.attr( 'date' ),
+  firstName:           DS.attr(),
+  lastName:            DS.attr(),
+  phone:               DS.attr(),
+  driverId:            DS.attr( 'number' ),
+  inviteExpiresAt:     DS.attr( 'date' ),
+  confirmAcceptedAt:   DS.attr( 'date' ),
+  isDriverDashEnabled: DS.attr( 'boolean' ),
 
   @computed( 'firstName', 'lastName' )
   fullName( firstName, lastName ) {

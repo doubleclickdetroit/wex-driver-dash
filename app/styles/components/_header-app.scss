@@ -2,8 +2,8 @@
   @include grid-row;
 
   .top-bar {
-    padding-top:    rem-calc(30);
-    padding-bottom: rem-calc(30);
+    padding-top:    rem-calc(15);
+    padding-bottom: rem-calc(15);
     background-color: transparent;
   }
 
@@ -14,6 +14,10 @@
 
   .top-bar-title {
     margin-right: rem-calc(40);
+
+    img {
+      max-height: rem-calc(75);
+    }
   }
 
   .content-account {

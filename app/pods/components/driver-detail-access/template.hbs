@@ -1,1 +1,4 @@
-{{yield}}
+<select onchange={{action (mut driver.isDriverDashEnabled) value="target.value"}}>
+  <option value=true selected={{eq driver.isDriverDashEnabled true}}>Enabled</option>
+  <option value=false selected={{eq driver.isDriverDashEnabled false}}>Disabled</option>
+</select>

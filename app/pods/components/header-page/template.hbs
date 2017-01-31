@@ -19,7 +19,7 @@
     <p>Mobile Payment Currently Accepted At These Locations</p>
 
     {{#each partners as |partner|}}
-      <span class="partner-logo">{{ partner.name }}</span>
+      <span class="partner-logo"><img src={{ partner.url }}></span>
     {{/each}}
   </div>
 </div>
