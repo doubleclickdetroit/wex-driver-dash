@@ -42,7 +42,7 @@ test('0 drivers should result in appropriate messaging', function(assert) {
   visit( '/' );
 
   andThen(() => {
-    assert.ok( find('.no-content').is(':visible'), 'no drivers to select messaging is displayed' );
+    assert.ok( find('.content-empty').is(':visible'), 'no drivers to select messaging is displayed' );
     assert.equal( find('.items-count:eq(0)').text().trim(), '0 Drivers', 'text displays to indicate number of drivers rendered is "0 Drivers"' );
   });
 });
