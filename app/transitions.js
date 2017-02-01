@@ -47,5 +47,10 @@ export default function() {
     this.toValue( true ),
     this.use( 'toUp' )
   );
+  this.transition(
+    this.hasClass( 'driver-undelivered-status' ),
+    this.toValue( false ),
+    this.use( 'toUp' )
+  );
 
 }

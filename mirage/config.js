@@ -36,10 +36,13 @@ export default function() {
   });
 
   this.put('/drivers/:id', function({ drivers }, request) {
-    let id      = request.params.id;
     let numDays = Math.floor( (Math.random() * 4) + 1 );
-    let attrs = { inviteExpiresAt: moment().add( numDays, 'days' ).toDate() };
-    return drivers.find( id ).update( attrs );
+    let attrs = {
+      underliveredAt:  null,
+      inviteExpiresAt: moment().add( numDays, 'days' ).toDate()
+    };
+
+    return drivers.find( request.params.id ).update( attrs );
   });
 
 

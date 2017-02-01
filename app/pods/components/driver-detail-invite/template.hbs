@@ -1,6 +1,6 @@
 {{#liquid-if driver.hasInvite class="driver-invite"}}
 
-  {{#if driver.isUndeliverable}}
+  {{#liquid-if driver.isUndeliverable class="driver-undelivered-status"}}
 
     <div class="invited undelivered">
       <p class="status">Undeliverable</p>
@@ -13,7 +13,7 @@
       <p class="expiration">Expires in {{moment-from-now driver.inviteExpiresAt}}</p>
     </div>
 
-  {{/if}}
+  {{/liquid-if}}
 
 {{else if driver.isSaving}}
 
