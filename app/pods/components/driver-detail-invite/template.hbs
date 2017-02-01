@@ -1,9 +1,19 @@
-{{#liquid-if driver.isInviteCurrent class="driver-invite"}}
+{{#liquid-if driver.hasInvite class="driver-invite"}}
 
-  <div class="invited">
-    <p class="status">Invite Sent</p>
-    <p class="expiration">Expires in {{moment-from-now driver.inviteExpiresAt}}</p>
-  </div>
+  {{#if driver.isUndeliverable}}
+
+    <div class="invited undelivered">
+      <p class="status">Undeliverable</p>
+    </div>
+
+  {{else if driver.isInviteCurrent}}
+
+    <div class="invited delivered">
+      <p class="status">Invite Sent</p>
+      <p class="expiration">Expires in {{moment-from-now driver.inviteExpiresAt}}</p>
+    </div>
+
+  {{/if}}
 
 {{else if driver.isSaving}}
 

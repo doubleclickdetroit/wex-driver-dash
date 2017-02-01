@@ -44,8 +44,10 @@ export default DS.Model.extend({
     return underliveredAt instanceof Date;
   },
 
-  @computed( 'hasInvite' )
-  isInviteCurrent( hasInvite ) {
+  @computed( 'hasInvite', 'isUndeliverable' )
+  isInviteCurrent( hasInvite, isUndeliverable ) {
+    if ( isUndeliverable ) { return false; }
+
     const expiresAt = moment( this.get('inviteExpiresAt') ),
           startDate = moment().startOf( 'day' ),
           endDate   = moment().add( 7, 'days' ).endOf( 'day' ),

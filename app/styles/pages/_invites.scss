@@ -107,7 +107,15 @@
       color: $success-color;
       font-family: 'fontello';
       font-size: rem-calc(16);
+    }
+    &.delivered::before {
+      color: $success-color;
       content: '';
+    }
+    &.undelivered::before {
+      top: calc(50% - 12px);
+      color: $alert-color;
+      content: '';
     }
 
     .status,
