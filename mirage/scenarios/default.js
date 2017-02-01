@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default function(server) {
 
   /*
@@ -10,9 +12,28 @@ export default function(server) {
   function getRandomNumber(n=5) {
     return Math.floor( Math.random() * n );
   }
+  function getRandomBoolean() {
+    return getRandomNumber(10) >= 5;
+  }
   function getRandomAccount() {
     let n = getRandomNumber( accounts.length );
     return accounts[ n ];
+  }
+  function getRandomInvitationStatus() {
+    let attrs = {};
+
+    // has invite?
+    if ( getRandomBoolean() ) {
+      let numDays = getRandomNumber();
+      attrs = { inviteExpiresAt: moment().add( numDays, 'days' ).toDate() };
+
+      // is underliverable?
+      if ( getRandomBoolean() ) {
+        attrs.underliveredAt = attrs.inviteExpiresAt;
+      }
+    }
+
+    return attrs;
   }
 
   // create accounts
@@ -33,8 +54,13 @@ export default function(server) {
   // create drivers (with associations)
   accounts.forEach(account => {
     // invite drivers
+    let i = 0;
     let n = getRandomNumber() + 1;
-    server.createList( 'driver', n, { accountId: account.id } );
+    while( i < n ) {
+      i++;
+      let invitationAttrs = getRandomInvitationStatus();
+      server.create( 'driver', { accountId: account.id, ...invitationAttrs } );
+    }
 
     // manage drivers
     n = getRandomNumber(3);
@@ -42,7 +68,7 @@ export default function(server) {
       accountId:           account.id,
       inviteExpiresAt:     new Date(),
       confirmAcceptedAt:   new Date(),
-      isDriverDashEnabled: Math.random() >= 0.5
+      isDriverDashEnabled: getRandomBoolean()
     });
   });
 

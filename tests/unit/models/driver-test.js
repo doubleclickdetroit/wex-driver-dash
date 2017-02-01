@@ -90,6 +90,25 @@ test('has a computed property "hasInvite"', function(assert) {
   });
 });
 
+test('has a computed property "isUndeliverable"', function(assert) {
+  const model = this.subject();
+
+  Ember.run(() => {
+    model.set( 'underliveredAt', undefined );
+    assert.equal( model.get('isUndeliverable'), false );
+
+    model.set( 'underliveredAt', null );
+    assert.equal( model.get('isUndeliverable'), false );
+
+    model.set( 'underliveredAt', '' );
+    assert.equal( model.get('isUndeliverable'), false );
+
+    let date = moment().toDate();
+    model.set( 'underliveredAt', date );
+    assert.equal( model.get('isUndeliverable'), true );
+  });
+});
+
 test('has a computed property "isInviteCurrent"', function(assert) {
   const model = this.subject();
 

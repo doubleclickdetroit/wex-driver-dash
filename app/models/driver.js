@@ -12,9 +12,12 @@ export default DS.Model.extend({
   lastName:            DS.attr(),
   phone:               DS.attr(),
   driverId:            DS.attr( 'number' ),
-  inviteExpiresAt:     DS.attr( 'date' ),
-  confirmAcceptedAt:   DS.attr( 'date' ),
   isDriverDashEnabled: DS.attr( 'boolean' ),
+
+  // seems these three attrs should be a nested/separate resource
+  inviteExpiresAt:   DS.attr( 'date' ),
+  confirmAcceptedAt: DS.attr( 'date' ),
+  underliveredAt:    DS.attr( 'date' ),
 
   @computed( 'firstName', 'lastName' )
   fullName( firstName, lastName ) {
@@ -34,6 +37,11 @@ export default DS.Model.extend({
   @computed( 'inviteExpiresAt' )
   hasInvite( inviteExpiresAt ) {
     return inviteExpiresAt instanceof Date;
+  },
+
+  @computed( 'underliveredAt' )
+  isUndeliverable( underliveredAt ) {
+    return underliveredAt instanceof Date;
   },
 
   @computed( 'hasInvite' )
